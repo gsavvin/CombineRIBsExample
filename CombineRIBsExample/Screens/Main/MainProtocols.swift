@@ -24,9 +24,11 @@ protocol MainInteractable: Interactable {
 
 // MARK: - Interactor
 
-protocol MainRouting: ViewableRouting {
-//  func trigger(_ route: MainRoute)
+protocol MainRouting: NavigationRouting {
+  func trigger(_ route: MainRoute)
 }
+
+enum MainRoute: RouteProtocol {}
 
 protocol MainPresentable: Presentable {}
 

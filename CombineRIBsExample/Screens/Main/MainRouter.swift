@@ -5,10 +5,11 @@
 //  Created by Геннадий Саввин on 24.01.2023.
 //
 
-final class MainRouter: ViewableRouter<MainInteractable, MainViewControllable> {
-//  override func prepareTransition(for route: MainRoute) -> <#Modal#><#Navigation#>Transition {}
+final class MainRouter: NavigationRouter<MainInteractable, MainViewControllable, MainRoute> {
+//  override func prepareTransition(for route: MainRoute) -> NavigationTransition {}
 }
 
 // MARK: - MainRouting
+
 
 extension MainRouter: MainRouting {}

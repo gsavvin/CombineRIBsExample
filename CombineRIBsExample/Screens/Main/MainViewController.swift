@@ -28,6 +28,14 @@ final class MainViewController: UIViewController, MainViewControllable {
     textlabel.numberOfLines = 0
     
     view.backgroundColor = .white
+    
+    bindIfNeeded()
+  }
+  
+
+  override func viewDidDisappear(_ animated: Bool) {
+    super.viewDidDisappear(animated)
+    // вызвать у роутера метод detach
   }
   
   override func viewDidLayoutSubviews() {

@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class MainNavigationRouter: ViewableRouter<MainNavigationInteractable, MainNavigationViewControllable> {
+final class MainNavigationRouter: NavigationRouter<MainNavigationInteractable, MainNavigationViewControllable, MainNavigationRoute> {
   private let mainBuilder: any MainBuildable
   
   init(interactor: any MainNavigationInteractable,
@@ -21,17 +21,12 @@ final class MainNavigationRouter: ViewableRouter<MainNavigationInteractable, Mai
   override func didLoad() {
     super.didLoad()
     
-    routeToMain()
+    trigger(.main)
   }
   
-  private func routeToMain() {
-    let mainRouter = mainBuilder.build()
-    attachChild(mainRouter)
-    
-    let mainVC = mainRouter.viewControllable.uiviewController
-    
-    if let navVC = self.viewController.uiviewController as? UINavigationController {
-      navVC.pushViewController(mainVC, animated: false)
+  override func prepareTransition(for route: MainNavigationRoute) -> NavigationTransition {
+    switch route {
+    case .main: return .push(mainBuilder.build())
     }
   }
 }

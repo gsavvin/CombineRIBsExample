@@ -37,7 +37,7 @@ public protocol InteractorScope: AnyObject {
 }
 
 /// The base protocol for all interactors.
-public protocol Interactable: InteractorScope {
+public protocol Interactable: InteractorScope, CustomDebugStringConvertible {
 
     // The following methods must be declared in the base protocol, since `Router` internally invokes these methods.
     // In order to unit test router with a mock interactor, the mocked interactor first needs to conform to the custom
@@ -55,6 +55,8 @@ public protocol Interactable: InteractorScope {
     /// - note: This method is internally invoked by the corresponding router. Application code should never explicitly
     ///   invoke this method.
     func deactivate()
+  
+  func routed(to router: Routing)
 }
 
 /// An `Interactor` defines a unit of business logic that corresponds to a router unit.
@@ -65,6 +67,10 @@ public protocol Interactable: InteractorScope {
 ///
 /// An `Interactor` should only perform its business logic when it's currently active.
 open class Interactor: Interactable {
+  open var debugDescription: String {
+    let components: [String] = [String(describing: type(of: self)).replacingOccurrences(of: "Interactor", with: ""), " "]
+    return components.joined()
+  }
 
     /// Indicates if the interactor is active.
     public final var isActive: Bool {
@@ -103,6 +109,10 @@ open class Interactor: Interactable {
     ///   this method to setup subscriptions and initial states.
     open func didBecomeActive() {
         // No-op
+    }
+  
+    open func routed(to router: Routing) {
+      // No-op
     }
 
     /// Deactivate this `Interactor`.

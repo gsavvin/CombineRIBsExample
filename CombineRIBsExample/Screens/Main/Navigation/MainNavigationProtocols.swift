@@ -22,5 +22,9 @@ protocol MainNavigationInteractable: Interactable {
 // MARK: - Interactor
 
 protocol MainNavigationRouting: ViewableRouting {
-//  func trigger(_ route: MainNavigationRoute)
+  func trigger(_ route: MainNavigationRoute)
+}
+
+enum MainNavigationRoute: RouteProtocol {
+  case main
 }
