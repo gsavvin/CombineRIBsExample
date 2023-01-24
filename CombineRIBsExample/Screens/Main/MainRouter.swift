@@ -6,7 +6,19 @@
 //
 
 final class MainRouter: NavigationRouter<MainInteractable, MainViewControllable, MainRoute> {
-//  override func prepareTransition(for route: MainRoute) -> NavigationTransition {}
+  private let catalog3Builder: any Catalog3Buildable
+  
+  init(interactor: any MainInteractable, viewController: any MainViewControllable, catalog3Builder: any Catalog3Buildable) {
+    self.catalog3Builder = catalog3Builder
+    
+    super.init(interactor: interactor, viewController: viewController)
+  }
+  
+  override func prepareTransition(for route: MainRoute) -> NavigationTransition {
+    switch route {
+    case .catalog3(let id): return .push(catalog3Builder.build())
+    }
+  }
 }
 
 // MARK: - MainRouting

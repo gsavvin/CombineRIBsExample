@@ -16,6 +16,8 @@ public protocol ViewableRouting: Routing {
   func close()
   
   func close(animated: Bool, completion: RouteCompletion?)
+  
+  func detach()
 }
 
 extension ViewableRouting {

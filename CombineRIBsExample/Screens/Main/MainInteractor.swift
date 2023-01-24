@@ -32,6 +32,7 @@ extension MainInteractor {
   private func loadData() {
     DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [weak self] in
       self?.responses.$dataLoaded.send(MainScreenData())
+      self?.router?.trigger(.catalog3(1))
     }
   }
 }
