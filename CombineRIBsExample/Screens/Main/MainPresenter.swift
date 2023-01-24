@@ -11,5 +11,6 @@ final class MainPresenter: MainPresentable {}
 
 //extension MainPresenter: IOTransformer {
 //  func transform(input state: Observable<MainInteractorState>) -> MainPresenterOutput {
+//    
 //  }
 //}
