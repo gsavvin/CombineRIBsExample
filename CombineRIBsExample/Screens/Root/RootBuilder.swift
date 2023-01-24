@@ -9,7 +9,9 @@ final class RootBuilder: Builder<EmptyDependency>, RootBuildable {
   func build() -> RootRouting {
     let viewController = RootViewController()
     let interactor = RootInteractor()
-    let router = RootRouter(interactor: interactor, viewController: viewController)
+    let router = RootRouter(interactor: interactor,
+                            viewController: viewController,
+                            mainBuilder: MainNavigationBuilder(dependency: EmptyComponent()))
 
     interactor.router = router
 

@@ -30,6 +30,17 @@
 		9A3402AC297FBAAF00CBF14E /* RootProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3402A6297FBAAE00CBF14E /* RootProtocols.swift */; };
 		9A3402AD297FBAAF00CBF14E /* RootBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3402A7297FBAAE00CBF14E /* RootBuilder.swift */; };
 		9A3402AE297FBAAF00CBF14E /* RootInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3402A8297FBAAE00CBF14E /* RootInteractor.swift */; };
+		9A3402B7297FC6AB00CBF14E /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3402B1297FC6AB00CBF14E /* MainPresenter.swift */; };
+		9A3402B8297FC6AB00CBF14E /* MainRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3402B2297FC6AB00CBF14E /* MainRouter.swift */; };
+		9A3402B9297FC6AB00CBF14E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3402B3297FC6AB00CBF14E /* MainViewController.swift */; };
+		9A3402BA297FC6AB00CBF14E /* MainProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3402B4297FC6AB00CBF14E /* MainProtocols.swift */; };
+		9A3402BB297FC6AB00CBF14E /* MainBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3402B5297FC6AB00CBF14E /* MainBuilder.swift */; };
+		9A3402BC297FC6AB00CBF14E /* MainInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3402B6297FC6AB00CBF14E /* MainInteractor.swift */; };
+		9A3402C5297FCCCA00CBF14E /* MainNavigationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3402BF297FCCCA00CBF14E /* MainNavigationRouter.swift */; };
+		9A3402C6297FCCCA00CBF14E /* MainNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3402C0297FCCCA00CBF14E /* MainNavigationViewController.swift */; };
+		9A3402C7297FCCCA00CBF14E /* MainNavigationProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3402C1297FCCCA00CBF14E /* MainNavigationProtocols.swift */; };
+		9A3402C8297FCCCA00CBF14E /* MainNavigationBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3402C2297FCCCA00CBF14E /* MainNavigationBuilder.swift */; };
+		9A3402C9297FCCCA00CBF14E /* MainNavigationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3402C3297FCCCA00CBF14E /* MainNavigationInteractor.swift */; };
 		9A6C720E297EBC8800B54C15 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6C720D297EBC8800B54C15 /* AppDelegate.swift */; };
 		9A6C7217297EBC8A00B54C15 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A6C7216297EBC8A00B54C15 /* Assets.xcassets */; };
 		9A6C721A297EBC8A00B54C15 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A6C7218297EBC8A00B54C15 /* LaunchScreen.storyboard */; };
@@ -59,6 +70,17 @@
 		9A3402A6297FBAAE00CBF14E /* RootProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootProtocols.swift; sourceTree = "<group>"; };
 		9A3402A7297FBAAE00CBF14E /* RootBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootBuilder.swift; sourceTree = "<group>"; };
 		9A3402A8297FBAAE00CBF14E /* RootInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootInteractor.swift; sourceTree = "<group>"; };
+		9A3402B1297FC6AB00CBF14E /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
+		9A3402B2297FC6AB00CBF14E /* MainRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRouter.swift; sourceTree = "<group>"; };
+		9A3402B3297FC6AB00CBF14E /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		9A3402B4297FC6AB00CBF14E /* MainProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainProtocols.swift; sourceTree = "<group>"; };
+		9A3402B5297FC6AB00CBF14E /* MainBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainBuilder.swift; sourceTree = "<group>"; };
+		9A3402B6297FC6AB00CBF14E /* MainInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInteractor.swift; sourceTree = "<group>"; };
+		9A3402BF297FCCCA00CBF14E /* MainNavigationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationRouter.swift; sourceTree = "<group>"; };
+		9A3402C0297FCCCA00CBF14E /* MainNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationViewController.swift; sourceTree = "<group>"; };
+		9A3402C1297FCCCA00CBF14E /* MainNavigationProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationProtocols.swift; sourceTree = "<group>"; };
+		9A3402C2297FCCCA00CBF14E /* MainNavigationBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationBuilder.swift; sourceTree = "<group>"; };
+		9A3402C3297FCCCA00CBF14E /* MainNavigationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationInteractor.swift; sourceTree = "<group>"; };
 		9A6C720A297EBC8800B54C15 /* CombineRIBsExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CombineRIBsExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A6C720D297EBC8800B54C15 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9A6C7216297EBC8A00B54C15 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -174,8 +196,27 @@
 		9A3402AF297FC1B600CBF14E /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				9A3402BD297FCBAD00CBF14E /* Navigation */,
+				9A3402B4297FC6AB00CBF14E /* MainProtocols.swift */,
+				9A3402B5297FC6AB00CBF14E /* MainBuilder.swift */,
+				9A3402B2297FC6AB00CBF14E /* MainRouter.swift */,
+				9A3402B6297FC6AB00CBF14E /* MainInteractor.swift */,
+				9A3402B1297FC6AB00CBF14E /* MainPresenter.swift */,
+				9A3402B3297FC6AB00CBF14E /* MainViewController.swift */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		9A3402BD297FCBAD00CBF14E /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				9A3402C1297FCCCA00CBF14E /* MainNavigationProtocols.swift */,
+				9A3402C2297FCCCA00CBF14E /* MainNavigationBuilder.swift */,
+				9A3402BF297FCCCA00CBF14E /* MainNavigationRouter.swift */,
+				9A3402C3297FCCCA00CBF14E /* MainNavigationInteractor.swift */,
+				9A3402C0297FCCCA00CBF14E /* MainNavigationViewController.swift */,
+			);
+			path = Navigation;
 			sourceTree = "<group>";
 		};
 		9A6C7201297EBC8800B54C15 = {
@@ -282,23 +323,34 @@
 				9A3402AD297FBAAF00CBF14E /* RootBuilder.swift in Sources */,
 				9A340292297FBA5B00CBF14E /* LeakDetector.swift in Sources */,
 				9A34029C297FBA5B00CBF14E /* Presenter.swift in Sources */,
+				9A3402BB297FC6AB00CBF14E /* MainBuilder.swift in Sources */,
+				9A3402B8297FC6AB00CBF14E /* MainRouter.swift in Sources */,
 				9A340290297FBA5B00CBF14E /* Workflow.swift in Sources */,
 				9A340299297FBA5B00CBF14E /* Combine+Extensions.swift in Sources */,
 				9A3402AC297FBAAF00CBF14E /* RootProtocols.swift in Sources */,
 				9A3402A0297FBA5B00CBF14E /* PresentableInteractor.swift in Sources */,
+				9A3402C5297FCCCA00CBF14E /* MainNavigationRouter.swift in Sources */,
 				9A3402AA297FBAAF00CBF14E /* RootRouter.swift in Sources */,
 				9A34029A297FBA5B00CBF14E /* Foundation+Extensions.swift in Sources */,
 				9A340295297FBA5B00CBF14E /* MultiStageComponentizedBuilder.swift in Sources */,
 				9A340291297FBA5B00CBF14E /* Executor.swift in Sources */,
 				9A3402AB297FBAAF00CBF14E /* RootViewController.swift in Sources */,
 				9A34028F297FBA5B00CBF14E /* ViewableRouter.swift in Sources */,
+				9A3402BA297FC6AB00CBF14E /* MainProtocols.swift in Sources */,
+				9A3402C8297FCCCA00CBF14E /* MainNavigationBuilder.swift in Sources */,
+				9A3402C6297FCCCA00CBF14E /* MainNavigationViewController.swift in Sources */,
+				9A3402B7297FC6AB00CBF14E /* MainPresenter.swift in Sources */,
 				9A340294297FBA5B00CBF14E /* ViewControllable.swift in Sources */,
 				9A3402AE297FBAAF00CBF14E /* RootInteractor.swift in Sources */,
 				9A34029B297FBA5B00CBF14E /* Worker.swift in Sources */,
 				9A34029E297FBA5B00CBF14E /* Dependency.swift in Sources */,
+				9A3402BC297FC6AB00CBF14E /* MainInteractor.swift in Sources */,
 				9A34029D297FBA5B00CBF14E /* Interactor.swift in Sources */,
 				9A340296297FBA5B00CBF14E /* LaunchRouter.swift in Sources */,
 				9A6C720E297EBC8800B54C15 /* AppDelegate.swift in Sources */,
+				9A3402C7297FCCCA00CBF14E /* MainNavigationProtocols.swift in Sources */,
+				9A3402B9297FC6AB00CBF14E /* MainViewController.swift in Sources */,
+				9A3402C9297FCCCA00CBF14E /* MainNavigationInteractor.swift in Sources */,
 				9A340293297FBA5B00CBF14E /* ComponentizedBuilder.swift in Sources */,
 				9A340298297FBA5B00CBF14E /* Builder.swift in Sources */,
 			);
