@@ -41,6 +41,7 @@
 		9A3402C7297FCCCA00CBF14E /* MainNavigationProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3402C1297FCCCA00CBF14E /* MainNavigationProtocols.swift */; };
 		9A3402C8297FCCCA00CBF14E /* MainNavigationBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3402C2297FCCCA00CBF14E /* MainNavigationBuilder.swift */; };
 		9A3402C9297FCCCA00CBF14E /* MainNavigationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3402C3297FCCCA00CBF14E /* MainNavigationInteractor.swift */; };
+		9A3402CB297FD65700CBF14E /* VIPBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3402CA297FD65700CBF14E /* VIPBinder.swift */; };
 		9A6C720E297EBC8800B54C15 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6C720D297EBC8800B54C15 /* AppDelegate.swift */; };
 		9A6C7217297EBC8A00B54C15 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A6C7216297EBC8A00B54C15 /* Assets.xcassets */; };
 		9A6C721A297EBC8A00B54C15 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A6C7218297EBC8A00B54C15 /* LaunchScreen.storyboard */; };
@@ -81,6 +82,7 @@
 		9A3402C1297FCCCA00CBF14E /* MainNavigationProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationProtocols.swift; sourceTree = "<group>"; };
 		9A3402C2297FCCCA00CBF14E /* MainNavigationBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationBuilder.swift; sourceTree = "<group>"; };
 		9A3402C3297FCCCA00CBF14E /* MainNavigationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationInteractor.swift; sourceTree = "<group>"; };
+		9A3402CA297FD65700CBF14E /* VIPBinder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VIPBinder.swift; sourceTree = "<group>"; };
 		9A6C720A297EBC8800B54C15 /* CombineRIBsExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CombineRIBsExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A6C720D297EBC8800B54C15 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9A6C7216297EBC8A00B54C15 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 		9A340284297FBA5B00CBF14E /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				9A3402CA297FD65700CBF14E /* VIPBinder.swift */,
 				9A340285297FBA5B00CBF14E /* Combine+Extensions.swift */,
 				9A340286297FBA5B00CBF14E /* Foundation+Extensions.swift */,
 			);
@@ -351,6 +354,7 @@
 				9A3402C7297FCCCA00CBF14E /* MainNavigationProtocols.swift in Sources */,
 				9A3402B9297FC6AB00CBF14E /* MainViewController.swift in Sources */,
 				9A3402C9297FCCCA00CBF14E /* MainNavigationInteractor.swift in Sources */,
+				9A3402CB297FD65700CBF14E /* VIPBinder.swift in Sources */,
 				9A340293297FBA5B00CBF14E /* ComponentizedBuilder.swift in Sources */,
 				9A340298297FBA5B00CBF14E /* Builder.swift in Sources */,
 			);
