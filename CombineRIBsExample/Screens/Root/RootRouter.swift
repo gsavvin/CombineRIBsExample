@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class RootRouter: LaunchRouter<RootInteractable, RootViewControllable> {
+final class RootRouter: LaunchRouter<RootInteractable, RootViewControllable, RootRoute> {
   private let mainNavigationBuilder: any MainNavigationBuildable
   
   init(interactor: any RootInteractable,
@@ -21,18 +21,13 @@ final class RootRouter: LaunchRouter<RootInteractable, RootViewControllable> {
   override func didLoad() {
     super.didLoad()
     
-    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
-      self?.routeToMain()
-    }
+    trigger(.main)
   }
   
-  private func routeToMain() {
-    let mainNavigationRouter = mainNavigationBuilder.build()
-    attachChild(mainNavigationRouter)
-    
-    let mainVC = mainNavigationRouter.viewControllable.uiviewController
-    mainVC.modalPresentationStyle = .overFullScreen
-    self.viewController.uiviewController.present(mainVC, animated: false)
+  override func prepareTransition(for route: RootRoute) -> LaunchTransition {
+    switch route {
+    case .main: return .setAsRoot(mainNavigationBuilder.build())
+    }
   }
 }
 

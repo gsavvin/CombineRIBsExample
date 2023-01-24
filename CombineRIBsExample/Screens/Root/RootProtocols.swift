@@ -27,6 +27,6 @@ protocol RootRouting: ViewableRouting {
   func launch(from window: UIWindow)
 }
 
-//enum RootRoute: RouteProtocol {
-//  case main
-//}
+enum RootRoute: RouteProtocol {
+  case main
+}

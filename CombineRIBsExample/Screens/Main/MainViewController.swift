@@ -13,4 +13,9 @@ final class MainViewController: UIViewController, MainViewControllable {
     
     view.backgroundColor = .white
   }
+  
+  override func viewDidDisappear(_ animated: Bool) {
+    super.viewDidDisappear(animated)
+    // вызвать у роутера метод detach
+  }
 }

@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		002641C4297FE662005634DC /* Routing+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002641C3297FE662005634DC /* Routing+Extension.swift */; };
+		002641C8297FE734005634DC /* UIViewController+Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002641C7297FE734005634DC /* UIViewController+Transition.swift */; };
+		002641CA297FE77C005634DC /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002641C9297FE77C005634DC /* Container.swift */; };
+		002641CC297FE872005634DC /* EmbedRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002641CB297FE872005634DC /* EmbedRouter.swift */; };
+		002641CE297FE88D005634DC /* FlowRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002641CD297FE88D005634DC /* FlowRouter.swift */; };
+		002641D0297FE8A3005634DC /* ModalRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002641CF297FE8A3005634DC /* ModalRouter.swift */; };
+		002641D2297FE8C1005634DC /* NavigationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002641D1297FE8C1005634DC /* NavigationRouter.swift */; };
+		002641D4297FE95A005634DC /* UINavigationController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002641D3297FE95A005634DC /* UINavigationController+Extension.swift */; };
 		9A34028F297FBA5B00CBF14E /* ViewableRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A340278297FBA5A00CBF14E /* ViewableRouter.swift */; };
 		9A340290297FBA5B00CBF14E /* Workflow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A34027A297FBA5A00CBF14E /* Workflow.swift */; };
 		9A340291297FBA5B00CBF14E /* Executor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A34027C297FBA5A00CBF14E /* Executor.swift */; };
@@ -47,6 +55,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		002641C3297FE662005634DC /* Routing+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Routing+Extension.swift"; sourceTree = "<group>"; };
+		002641C7297FE734005634DC /* UIViewController+Transition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Transition.swift"; sourceTree = "<group>"; };
+		002641C9297FE77C005634DC /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
+		002641CB297FE872005634DC /* EmbedRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbedRouter.swift; sourceTree = "<group>"; };
+		002641CD297FE88D005634DC /* FlowRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowRouter.swift; sourceTree = "<group>"; };
+		002641CF297FE8A3005634DC /* ModalRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalRouter.swift; sourceTree = "<group>"; };
+		002641D1297FE8C1005634DC /* NavigationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationRouter.swift; sourceTree = "<group>"; };
+		002641D3297FE95A005634DC /* UINavigationController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extension.swift"; sourceTree = "<group>"; };
 		9A340278297FBA5A00CBF14E /* ViewableRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewableRouter.swift; sourceTree = "<group>"; };
 		9A34027A297FBA5A00CBF14E /* Workflow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Workflow.swift; sourceTree = "<group>"; };
 		9A34027C297FBA5A00CBF14E /* Executor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Executor.swift; sourceTree = "<group>"; };
@@ -99,6 +115,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		002641C5297FE6FA005634DC /* Routing */ = {
+			isa = PBXGroup;
+			children = (
+				002641C6297FE71C005634DC /* Extensions */,
+				9A340282297FBA5B00CBF14E /* Router.swift */,
+				9A340278297FBA5A00CBF14E /* ViewableRouter.swift */,
+				9A340281297FBA5B00CBF14E /* LaunchRouter.swift */,
+				002641C9297FE77C005634DC /* Container.swift */,
+				002641CB297FE872005634DC /* EmbedRouter.swift */,
+				002641CD297FE88D005634DC /* FlowRouter.swift */,
+				002641CF297FE8A3005634DC /* ModalRouter.swift */,
+				002641D1297FE8C1005634DC /* NavigationRouter.swift */,
+			);
+			path = Routing;
+			sourceTree = "<group>";
+		};
+		002641C6297FE71C005634DC /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				002641C3297FE662005634DC /* Routing+Extension.swift */,
+				002641C7297FE734005634DC /* UIViewController+Transition.swift */,
+				002641D3297FE95A005634DC /* UINavigationController+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		9A340274297FB9F900CBF14E /* Core */ = {
 			isa = PBXGroup;
 			children = (
@@ -111,18 +153,16 @@
 			isa = PBXGroup;
 			children = (
 				9A340283297FBA5B00CBF14E /* Builder.swift */,
-				9A34027E297FBA5B00CBF14E /* ComponentizedBuilder.swift */,
-				9A34028B297FBA5B00CBF14E /* DI */,
-				9A340284297FBA5B00CBF14E /* Extensions */,
 				9A34028A297FBA5B00CBF14E /* Interactor.swift */,
-				9A340281297FBA5B00CBF14E /* LaunchRouter.swift */,
-				9A34027B297FBA5A00CBF14E /* LeakDetector */,
-				9A340280297FBA5B00CBF14E /* MultiStageComponentizedBuilder.swift */,
 				9A34028E297FBA5B00CBF14E /* PresentableInteractor.swift */,
 				9A340289297FBA5B00CBF14E /* Presenter.swift */,
-				9A340282297FBA5B00CBF14E /* Router.swift */,
-				9A340278297FBA5A00CBF14E /* ViewableRouter.swift */,
+				9A34027E297FBA5B00CBF14E /* ComponentizedBuilder.swift */,
+				9A340280297FBA5B00CBF14E /* MultiStageComponentizedBuilder.swift */,
 				9A34027F297FBA5B00CBF14E /* ViewControllable.swift */,
+				002641C5297FE6FA005634DC /* Routing */,
+				9A34028B297FBA5B00CBF14E /* DI */,
+				9A340284297FBA5B00CBF14E /* Extensions */,
+				9A34027B297FBA5A00CBF14E /* LeakDetector */,
 				9A340287297FBA5B00CBF14E /* Worker */,
 				9A340279297FBA5A00CBF14E /* Workflow */,
 			);
@@ -323,12 +363,15 @@
 				9A3402AD297FBAAF00CBF14E /* RootBuilder.swift in Sources */,
 				9A340292297FBA5B00CBF14E /* LeakDetector.swift in Sources */,
 				9A34029C297FBA5B00CBF14E /* Presenter.swift in Sources */,
+				002641C4297FE662005634DC /* Routing+Extension.swift in Sources */,
 				9A3402BB297FC6AB00CBF14E /* MainBuilder.swift in Sources */,
 				9A3402B8297FC6AB00CBF14E /* MainRouter.swift in Sources */,
+				002641D2297FE8C1005634DC /* NavigationRouter.swift in Sources */,
 				9A340290297FBA5B00CBF14E /* Workflow.swift in Sources */,
 				9A340299297FBA5B00CBF14E /* Combine+Extensions.swift in Sources */,
 				9A3402AC297FBAAF00CBF14E /* RootProtocols.swift in Sources */,
 				9A3402A0297FBA5B00CBF14E /* PresentableInteractor.swift in Sources */,
+				002641CE297FE88D005634DC /* FlowRouter.swift in Sources */,
 				9A3402C5297FCCCA00CBF14E /* MainNavigationRouter.swift in Sources */,
 				9A3402AA297FBAAF00CBF14E /* RootRouter.swift in Sources */,
 				9A34029A297FBA5B00CBF14E /* Foundation+Extensions.swift in Sources */,
@@ -338,8 +381,10 @@
 				9A34028F297FBA5B00CBF14E /* ViewableRouter.swift in Sources */,
 				9A3402BA297FC6AB00CBF14E /* MainProtocols.swift in Sources */,
 				9A3402C8297FCCCA00CBF14E /* MainNavigationBuilder.swift in Sources */,
+				002641D0297FE8A3005634DC /* ModalRouter.swift in Sources */,
 				9A3402C6297FCCCA00CBF14E /* MainNavigationViewController.swift in Sources */,
 				9A3402B7297FC6AB00CBF14E /* MainPresenter.swift in Sources */,
+				002641CA297FE77C005634DC /* Container.swift in Sources */,
 				9A340294297FBA5B00CBF14E /* ViewControllable.swift in Sources */,
 				9A3402AE297FBAAF00CBF14E /* RootInteractor.swift in Sources */,
 				9A34029B297FBA5B00CBF14E /* Worker.swift in Sources */,
@@ -348,9 +393,12 @@
 				9A34029D297FBA5B00CBF14E /* Interactor.swift in Sources */,
 				9A340296297FBA5B00CBF14E /* LaunchRouter.swift in Sources */,
 				9A6C720E297EBC8800B54C15 /* AppDelegate.swift in Sources */,
+				002641C8297FE734005634DC /* UIViewController+Transition.swift in Sources */,
 				9A3402C7297FCCCA00CBF14E /* MainNavigationProtocols.swift in Sources */,
 				9A3402B9297FC6AB00CBF14E /* MainViewController.swift in Sources */,
+				002641CC297FE872005634DC /* EmbedRouter.swift in Sources */,
 				9A3402C9297FCCCA00CBF14E /* MainNavigationInteractor.swift in Sources */,
+				002641D4297FE95A005634DC /* UINavigationController+Extension.swift in Sources */,
 				9A340293297FBA5B00CBF14E /* ComponentizedBuilder.swift in Sources */,
 				9A340298297FBA5B00CBF14E /* Builder.swift in Sources */,
 			);

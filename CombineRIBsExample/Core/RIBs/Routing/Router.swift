@@ -44,6 +44,10 @@ public protocol Routing: RouterScope {
 
     /// The list of children routers of this `Router`.
     var children: [Routing] { get }
+  
+  /// Родительский роутер
+  /// - note: Добавлен для реализации итерации по дереву
+  var parent: Routing? { get set }
 
     /// Loads the `Router`.
     ///
@@ -57,12 +61,21 @@ public protocol Routing: RouterScope {
     /// Attaches the given router as a child.
     ///
     /// - parameter child: The child router to attach.
-    func attachChild(_ child: Routing)
-
-    /// Detaches the given router from the tree.
-    ///
-    /// - parameter child: The child router to detach.
-    func detachChild(_ child: Routing)
+  func attachChild(_ child: Routing)
+  
+  /// Detaches the given router from the tree.
+  ///
+  /// - parameter child: The child router to detach.
+  func detachChild(_ child: Routing)
+  
+  /// Детачит все дочерние роутеры
+  func detachAllChildren()
+  
+  /// Сигнализирует о начале детача из родительского роутера
+  func willDetachFromParent()
+  
+  /// Сигнализирует о детаче из родительского роутера
+  func didDetachFromParent()
 }
 
 /// The base class of all routers that does not own view controllers, representing application states.
@@ -83,6 +96,8 @@ open class Router<InteractorType>: Routing {
 
     /// The list of children `Router`s of this `Router`.
     public final var children: [Routing] = []
+  
+    public final weak var parent: Routing?
 
     /// The publisher that emits values when the router scope reaches its corresponding life-cycle stages.
     ///
@@ -123,6 +138,20 @@ open class Router<InteractorType>: Routing {
     open func didLoad() {
         // No-op
     }
+  
+  /// Сигнализирует о начале детача из родительского роутера
+  open func willDetachFromParent() {}
+  
+  /// Сигнализирует о детаче из родительского роутера
+  open func didDetachFromParent() {}
+  
+  /// Сигнализирует о начале детача дочернего роутера
+  /// - Parameter child: Дочерний роутер
+  open func didDetach(child: Routing) {}
+  
+  /// Сигнализирует о детаче дочернего роутера
+  /// - Parameter child: Дочерний роутер
+  open func willDetach(child: Routing) {}
 
     // We cannot declare the attach/detach child methods to take in concrete `Router` instances,
     // since during unit testing, we need to use mocked child routers.
@@ -134,6 +163,7 @@ open class Router<InteractorType>: Routing {
         assert(!(children.contains { $0 === child }), "Attempt to attach child: \(child), which is already attached to \(self).")
 
         children.append(child)
+      child.parent = self
 
         // Activate child first before loading. Router usually attaches immutable children in didLoad.
         // We need to make sure the RIB is activated before letting it attach immutable children.
@@ -145,10 +175,22 @@ open class Router<InteractorType>: Routing {
     ///
     /// - parameter child: The child `Router` to detach.
     public final func detachChild(_ child: Routing) {
-        child.interactable.deactivate()
-
-        children.removeElementByReference(child)
+      child.willDetachFromParent()
+      willDetach(child: child)
+      
+      child.interactable.deactivate()
+      
+      children.removeElementByReference(child)
+      
+      child.didDetachFromParent()
+      child.parent = nil
+      
+      didDetach(child: child)
     }
+  
+  public final func detachAllChildren() {
+    children.forEach(detachChild)
+  }
 
     // MARK: - Internal
 
@@ -202,13 +244,6 @@ open class Router<InteractorType>: Routing {
 
         for child in root.children {
             iterateSubtree(child, closure: closure)
-        }
-    }
-
-    private func detachAllChildren() {
-
-        for child in children {
-            detachChild(child)
         }
     }
 
