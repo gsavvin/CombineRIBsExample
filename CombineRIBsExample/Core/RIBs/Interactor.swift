@@ -81,6 +81,8 @@ open class Interactor: Interactable {
     public final var isActiveStream: AnyPublisher<Bool, Never> {
         return isActiveSubject.removeDuplicates().eraseToAnyPublisher()
     }
+  
+    public let retainBag = RetainBag()
 
     /// Initializer.
     public init() {
@@ -232,4 +234,16 @@ public extension AnyCancellable {
     func disposeOnDeactivate(interactor: Interactor) -> AnyCancellable {
         cancelOnDeactivate(interactor: interactor)
     }
+}
+
+public final class RetainBag {
+  private var retainedObjects: [AnyObject] = []
+  
+  internal init() {}
+  
+  public func add(object: any AnyObject) {
+    guard !retainedObjects.contains(where: { $0 === object }) else { return }
+    
+    retainedObjects.append(object)
+  }
 }

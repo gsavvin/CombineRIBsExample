@@ -58,4 +58,35 @@ protocol MainViewOutput {
 
 struct MainScreenData {
   let title = "MainScreenData"
+  
+  let banner = Banner(title: "Готовимся к весне", backgroundColor: .systemPurple)
+  
+  let categories: [CatalogCategory] = CatalogCategory.stubCategories()
+}
+
+struct Banner {
+  let title: String
+  let backgroundColor: UIColor
+}
+
+struct CatalogCategory {
+  let title: String
+  let childCategories: [CatalogCategory]?
+}
+
+extension CatalogCategory {
+  static func stubCategories() -> [CatalogCategory] {
+    let categories: [CatalogCategory] = [
+      CatalogCategory(title: "Мясо, птица, колбасы", childCategories: nil),
+      CatalogCategory(title: "Молоко, сыр", childCategories: nil),
+      CatalogCategory(title: "Овощи и фрукты", childCategories: nil),
+      CatalogCategory(title: "Сладости, торты", childCategories: nil),
+      CatalogCategory(title: "Хлеб и выпечка", childCategories: nil),
+      CatalogCategory(title: "Напитки", childCategories: nil),
+      CatalogCategory(title: "Орехи, снэки", childCategories: nil),
+      CatalogCategory(title: "Десткие товары", childCategories: nil),
+    ]
+    
+    return categories.map { CatalogCategory(title: $0.title, childCategories: categories)}
+  }
 }

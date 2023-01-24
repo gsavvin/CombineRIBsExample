@@ -18,7 +18,19 @@ final class MainBuilder: Builder<EmptyDependency>, MainBuildable {
 
     interactor.router = router
     
-    VIPBinder.bind(viewController: viewController, interactor: interactor, presenter: presenter)
+    let vipOutput = VIPBinder.bind(viewController: viewController, interactor: interactor, presenter: presenter)
+    
+    do {
+      /// Нужно доставать из зависимостей.
+      /// Сендер, задача которого отправить готовый ивент куда нужно (в нашем случае вероятно лишь наружу из библиотеки)
+      let globalSender = StatisticsSenderImp()
+      
+      let mainStatSender = MainStatSender(sender: globalSender,
+                                          viewOutput: vipOutput.viewOutput,
+                                          interactorOutput: vipOutput.interactorOutput)
+      
+      interactor.retainBag.add(object: mainStatSender)
+    }
 
     return router
   }

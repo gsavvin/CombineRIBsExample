@@ -62,6 +62,8 @@
 		9A3402D0297FEC7F00CBF14E /* CancelBag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3402CF297FEC7F00CBF14E /* CancelBag.swift */; };
 		9A3402D4297FF91C00CBF14E /* Publisher+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3402D3297FF91C00CBF14E /* Publisher+Extensions.swift */; };
 		9A3402D62980020B00CBF14E /* StateTransformBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3402D52980020B00CBF14E /* StateTransformBuilder.swift */; };
+		9A3402D829801F1300CBF14E /* MainStatSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3402D729801F1300CBF14E /* MainStatSender.swift */; };
+		9A3402DB29802AEF00CBF14E /* Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3402DA29802AEF00CBF14E /* Statistics.swift */; };
 		9A6C720E297EBC8800B54C15 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6C720D297EBC8800B54C15 /* AppDelegate.swift */; };
 		9A6C7217297EBC8A00B54C15 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A6C7216297EBC8A00B54C15 /* Assets.xcassets */; };
 		9A6C721A297EBC8A00B54C15 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A6C7218297EBC8A00B54C15 /* LaunchScreen.storyboard */; };
@@ -123,6 +125,8 @@
 		9A3402CF297FEC7F00CBF14E /* CancelBag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelBag.swift; sourceTree = "<group>"; };
 		9A3402D3297FF91C00CBF14E /* Publisher+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publisher+Extensions.swift"; sourceTree = "<group>"; };
 		9A3402D52980020B00CBF14E /* StateTransformBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateTransformBuilder.swift; sourceTree = "<group>"; };
+		9A3402D729801F1300CBF14E /* MainStatSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainStatSender.swift; sourceTree = "<group>"; };
+		9A3402DA29802AEF00CBF14E /* Statistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statistics.swift; sourceTree = "<group>"; };
 		9A6C720A297EBC8800B54C15 /* CombineRIBsExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CombineRIBsExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A6C720D297EBC8800B54C15 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9A6C7216297EBC8A00B54C15 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -192,6 +196,7 @@
 		9A340274297FB9F900CBF14E /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				9A3402D929802AD000CBF14E /* Statistics */,
 				9A340275297FBA1000CBF14E /* RIBs */,
 			);
 			path = Core;
@@ -293,6 +298,7 @@
 				9A3402B6297FC6AB00CBF14E /* MainInteractor.swift */,
 				9A3402B1297FC6AB00CBF14E /* MainPresenter.swift */,
 				9A3402B3297FC6AB00CBF14E /* MainViewController.swift */,
+				9A3402D729801F1300CBF14E /* MainStatSender.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -327,6 +333,14 @@
 			);
 			name = Extensions;
 			path = Tools/Extensions;
+			sourceTree = "<group>";
+		};
+		9A3402D929802AD000CBF14E /* Statistics */ = {
+			isa = PBXGroup;
+			children = (
+				9A3402DA29802AEF00CBF14E /* Statistics.swift */,
+			);
+			path = Statistics;
 			sourceTree = "<group>";
 		};
 		9A6C7201297EBC8800B54C15 = {
@@ -440,6 +454,7 @@
 				9A34029C297FBA5B00CBF14E /* Presenter.swift in Sources */,
 				002641C4297FE662005634DC /* Routing+Extension.swift in Sources */,
 				9A3402D0297FEC7F00CBF14E /* CancelBag.swift in Sources */,
+				9A3402D829801F1300CBF14E /* MainStatSender.swift in Sources */,
 				9A3402BB297FC6AB00CBF14E /* MainBuilder.swift in Sources */,
 				9A3402B8297FC6AB00CBF14E /* MainRouter.swift in Sources */,
 				002641E429802093005634DC /* ProductCell.swift in Sources */,
@@ -485,6 +500,7 @@
 				9A3402CB297FD65700CBF14E /* VIPBinder.swift in Sources */,
 				002641E029800B98005634DC /* Catalog3Builder.swift in Sources */,
 				9A340293297FBA5B00CBF14E /* ComponentizedBuilder.swift in Sources */,
+				9A3402DB29802AEF00CBF14E /* Statistics.swift in Sources */,
 				9A340298297FBA5B00CBF14E /* Builder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
