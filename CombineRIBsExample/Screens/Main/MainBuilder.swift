@@ -16,7 +16,7 @@ final class MainBuilder: Builder<EmptyDependency>, MainBuildable {
 
     interactor.router = router
     
-//    VIPBinder.bind(viewController: viewController, interactor: interactor, presenter: presenter)
+    VIPBinder.bind(viewController: viewController, interactor: interactor, presenter: presenter)
 
     return router
   }

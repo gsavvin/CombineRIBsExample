@@ -50,6 +50,10 @@
 		9A3402C8297FCCCA00CBF14E /* MainNavigationBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3402C2297FCCCA00CBF14E /* MainNavigationBuilder.swift */; };
 		9A3402C9297FCCCA00CBF14E /* MainNavigationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3402C3297FCCCA00CBF14E /* MainNavigationInteractor.swift */; };
 		9A3402CB297FD65700CBF14E /* VIPBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3402CA297FD65700CBF14E /* VIPBinder.swift */; };
+		9A3402CE297FEBFC00CBF14E /* SendablePublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3402CD297FEBFC00CBF14E /* SendablePublisher.swift */; };
+		9A3402D0297FEC7F00CBF14E /* CancelBag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3402CF297FEC7F00CBF14E /* CancelBag.swift */; };
+		9A3402D4297FF91C00CBF14E /* Publisher+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3402D3297FF91C00CBF14E /* Publisher+Extensions.swift */; };
+		9A3402D62980020B00CBF14E /* StateTransformBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3402D52980020B00CBF14E /* StateTransformBuilder.swift */; };
 		9A6C720E297EBC8800B54C15 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6C720D297EBC8800B54C15 /* AppDelegate.swift */; };
 		9A6C7217297EBC8A00B54C15 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A6C7216297EBC8A00B54C15 /* Assets.xcassets */; };
 		9A6C721A297EBC8A00B54C15 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A6C7218297EBC8A00B54C15 /* LaunchScreen.storyboard */; };
@@ -99,6 +103,10 @@
 		9A3402C2297FCCCA00CBF14E /* MainNavigationBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationBuilder.swift; sourceTree = "<group>"; };
 		9A3402C3297FCCCA00CBF14E /* MainNavigationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationInteractor.swift; sourceTree = "<group>"; };
 		9A3402CA297FD65700CBF14E /* VIPBinder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VIPBinder.swift; sourceTree = "<group>"; };
+		9A3402CD297FEBFC00CBF14E /* SendablePublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendablePublisher.swift; sourceTree = "<group>"; };
+		9A3402CF297FEC7F00CBF14E /* CancelBag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelBag.swift; sourceTree = "<group>"; };
+		9A3402D3297FF91C00CBF14E /* Publisher+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publisher+Extensions.swift"; sourceTree = "<group>"; };
+		9A3402D52980020B00CBF14E /* StateTransformBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateTransformBuilder.swift; sourceTree = "<group>"; };
 		9A6C720A297EBC8800B54C15 /* CombineRIBsExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CombineRIBsExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A6C720D297EBC8800B54C15 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9A6C7216297EBC8A00B54C15 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -262,6 +270,25 @@
 			path = Navigation;
 			sourceTree = "<group>";
 		};
+		9A3402CC297FEBE300CBF14E /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				9A3402CD297FEBFC00CBF14E /* SendablePublisher.swift */,
+				9A3402CF297FEC7F00CBF14E /* CancelBag.swift */,
+				9A3402D52980020B00CBF14E /* StateTransformBuilder.swift */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		9A3402D2297FF8F700CBF14E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				9A3402D3297FF91C00CBF14E /* Publisher+Extensions.swift */,
+			);
+			name = Extensions;
+			path = Tools/Extensions;
+			sourceTree = "<group>";
+		};
 		9A6C7201297EBC8800B54C15 = {
 			isa = PBXGroup;
 			children = (
@@ -281,6 +308,8 @@
 		9A6C720C297EBC8800B54C15 /* CombineRIBsExample */ = {
 			isa = PBXGroup;
 			children = (
+				9A3402D2297FF8F700CBF14E /* Extensions */,
+				9A3402CC297FEBE300CBF14E /* Tools */,
 				9A3402A1297FBA7B00CBF14E /* Screens */,
 				9A340274297FB9F900CBF14E /* Core */,
 				9A6C720D297EBC8800B54C15 /* AppDelegate.swift */,
@@ -362,11 +391,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A340297297FBA5B00CBF14E /* Router.swift in Sources */,
+				9A3402CE297FEBFC00CBF14E /* SendablePublisher.swift in Sources */,
+				9A3402D62980020B00CBF14E /* StateTransformBuilder.swift in Sources */,
 				9A34029F297FBA5B00CBF14E /* Component.swift in Sources */,
 				9A3402AD297FBAAF00CBF14E /* RootBuilder.swift in Sources */,
 				9A340292297FBA5B00CBF14E /* LeakDetector.swift in Sources */,
 				9A34029C297FBA5B00CBF14E /* Presenter.swift in Sources */,
 				002641C4297FE662005634DC /* Routing+Extension.swift in Sources */,
+				9A3402D0297FEC7F00CBF14E /* CancelBag.swift in Sources */,
 				9A3402BB297FC6AB00CBF14E /* MainBuilder.swift in Sources */,
 				9A3402B8297FC6AB00CBF14E /* MainRouter.swift in Sources */,
 				002641D2297FE8C1005634DC /* NavigationRouter.swift in Sources */,
@@ -378,6 +410,7 @@
 				9A3402C5297FCCCA00CBF14E /* MainNavigationRouter.swift in Sources */,
 				9A3402AA297FBAAF00CBF14E /* RootRouter.swift in Sources */,
 				9A34029A297FBA5B00CBF14E /* Foundation+Extensions.swift in Sources */,
+				9A3402D4297FF91C00CBF14E /* Publisher+Extensions.swift in Sources */,
 				9A340295297FBA5B00CBF14E /* MultiStageComponentizedBuilder.swift in Sources */,
 				9A340291297FBA5B00CBF14E /* Executor.swift in Sources */,
 				9A3402AB297FBAAF00CBF14E /* RootViewController.swift in Sources */,
