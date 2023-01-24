@@ -22,16 +22,9 @@ final class MainViewController: UIViewController, MainViewControllable {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    view.addSubview(textlabel)
-    textlabel.text = "Loading... 👀"
-    textlabel.textAlignment = .center
-    textlabel.numberOfLines = 0
-    
-    view.backgroundColor = .white
-    
+    initialSetup()
     bindIfNeeded()
   }
-  
 
   override func viewDidDisappear(_ animated: Bool) {
     super.viewDidDisappear(animated)
@@ -42,6 +35,14 @@ final class MainViewController: UIViewController, MainViewControllable {
     super.viewDidLayoutSubviews()
     
     textlabel.frame = view.bounds
+  }
+  
+  private func initialSetup() {
+    view.backgroundColor = .white
+    
+    view.addSubview(textlabel)
+    textlabel.textAlignment = .center
+    textlabel.numberOfLines = 0
   }
 }
 
@@ -58,10 +59,15 @@ extension MainViewController: BindableView {
   private func bindIfNeeded() {
     guard let input = presenterOutput, isViewLoaded else { return }
     
-    input.viewModel.sink { [weak self] vm in
-      self?.textlabel.text = "Data loaded 🫡\n\n\(vm.title)"
+    cancelBag.collect {
+      input.viewModel.sink { [weak self] vm in
+        self?.textlabel.text = "Data loaded 🫡\n\n\(vm.title)"
+      }
+      
+      input.isLoadingIndicatorVisible.sink { [weak self]  _ in
+        self?.textlabel.text = "Loading... 👀"
+      }
     }
-    .store(in: &cancelBag)
   }
 }
 
