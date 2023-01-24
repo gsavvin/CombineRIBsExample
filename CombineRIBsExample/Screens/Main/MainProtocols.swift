@@ -5,6 +5,7 @@
 //  Created by Геннадий Саввин on 24.01.2023.
 //
 
+import Combine
 import UIKit
 
 // MARK: - Builder
@@ -28,3 +29,29 @@ protocol MainRouting: ViewableRouting {
 }
 
 protocol MainPresentable: Presentable {}
+
+// MARK: - Outputs
+
+enum MainInteractorState {
+  case isLoading
+  case dataLoaded(MainScreenData)
+  case loadingError
+}
+
+struct MainInteractorOutput {
+  let state: AnyPublisher<MainInteractorState, Never>
+}
+
+struct MainPresenterOutput {
+  let viewModel: AnyDriver<MainScreenData>
+  let isLoadingIndicatorVisible: AnyDriver<Bool>
+}
+
+protocol MainViewOutput {
+  var bannerTap: AnyDriver<Void> { get }
+  var categoryTap: AnyDriver<Void> { get }
+}
+
+struct MainScreenData {
+  let title = "MainScreenData"
+}
