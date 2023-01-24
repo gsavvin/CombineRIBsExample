@@ -12,7 +12,9 @@ final class MainBuilder: Builder<EmptyDependency>, MainBuildable {
     let viewController = MainViewController()
     let presenter = MainPresenter()
     let interactor = MainInteractor(presenter: presenter)
-    let router = MainRouter(interactor: interactor, viewController: viewController)
+    let router = MainRouter(interactor: interactor,
+                            viewController: viewController,
+                            catalog3Builder: Catalog3Builder(dependency: dependency))
 
     interactor.router = router
     

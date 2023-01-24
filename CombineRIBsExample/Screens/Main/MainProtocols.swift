@@ -28,7 +28,9 @@ protocol MainRouting: NavigationRouting {
   func trigger(_ route: MainRoute)
 }
 
-enum MainRoute: RouteProtocol {}
+enum MainRoute: RouteProtocol {
+  case catalog3(Int)
+}
 
 protocol MainPresentable: Presentable {}
 

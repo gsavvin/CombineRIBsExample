@@ -15,6 +15,14 @@
 		002641D0297FE8A3005634DC /* ModalRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002641CF297FE8A3005634DC /* ModalRouter.swift */; };
 		002641D2297FE8C1005634DC /* NavigationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002641D1297FE8C1005634DC /* NavigationRouter.swift */; };
 		002641D4297FE95A005634DC /* UINavigationController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002641D3297FE95A005634DC /* UINavigationController+Extension.swift */; };
+		002641DC29800B98005634DC /* Catalog3Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002641D629800B98005634DC /* Catalog3Presenter.swift */; };
+		002641DD29800B98005634DC /* Catalog3Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002641D729800B98005634DC /* Catalog3Router.swift */; };
+		002641DE29800B98005634DC /* Catalog3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002641D829800B98005634DC /* Catalog3ViewController.swift */; };
+		002641DF29800B98005634DC /* Catalog3Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002641D929800B98005634DC /* Catalog3Protocols.swift */; };
+		002641E029800B98005634DC /* Catalog3Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002641DA29800B98005634DC /* Catalog3Builder.swift */; };
+		002641E129800B98005634DC /* Catalog3Interactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002641DB29800B98005634DC /* Catalog3Interactor.swift */; };
+		002641E429802093005634DC /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002641E329802093005634DC /* ProductCell.swift */; };
+		002641E629802A42005634DC /* UICollectionView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002641E529802A42005634DC /* UICollectionView+Extensions.swift */; };
 		9A34028F297FBA5B00CBF14E /* ViewableRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A340278297FBA5A00CBF14E /* ViewableRouter.swift */; };
 		9A340290297FBA5B00CBF14E /* Workflow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A34027A297FBA5A00CBF14E /* Workflow.swift */; };
 		9A340291297FBA5B00CBF14E /* Executor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A34027C297FBA5A00CBF14E /* Executor.swift */; };
@@ -68,6 +76,14 @@
 		002641CF297FE8A3005634DC /* ModalRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalRouter.swift; sourceTree = "<group>"; };
 		002641D1297FE8C1005634DC /* NavigationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationRouter.swift; sourceTree = "<group>"; };
 		002641D3297FE95A005634DC /* UINavigationController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extension.swift"; sourceTree = "<group>"; };
+		002641D629800B98005634DC /* Catalog3Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Catalog3Presenter.swift; sourceTree = "<group>"; };
+		002641D729800B98005634DC /* Catalog3Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Catalog3Router.swift; sourceTree = "<group>"; };
+		002641D829800B98005634DC /* Catalog3ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Catalog3ViewController.swift; sourceTree = "<group>"; };
+		002641D929800B98005634DC /* Catalog3Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Catalog3Protocols.swift; sourceTree = "<group>"; };
+		002641DA29800B98005634DC /* Catalog3Builder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Catalog3Builder.swift; sourceTree = "<group>"; };
+		002641DB29800B98005634DC /* Catalog3Interactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Catalog3Interactor.swift; sourceTree = "<group>"; };
+		002641E329802093005634DC /* ProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
+		002641E529802A42005634DC /* UICollectionView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extensions.swift"; sourceTree = "<group>"; };
 		9A340278297FBA5A00CBF14E /* ViewableRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewableRouter.swift; sourceTree = "<group>"; };
 		9A34027A297FBA5A00CBF14E /* Workflow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Workflow.swift; sourceTree = "<group>"; };
 		9A34027C297FBA5A00CBF14E /* Executor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Executor.swift; sourceTree = "<group>"; };
@@ -151,6 +167,28 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		002641D529800B76005634DC /* Catalog3 */ = {
+			isa = PBXGroup;
+			children = (
+				002641E229802087005634DC /* Views */,
+				002641D929800B98005634DC /* Catalog3Protocols.swift */,
+				002641DA29800B98005634DC /* Catalog3Builder.swift */,
+				002641D729800B98005634DC /* Catalog3Router.swift */,
+				002641DB29800B98005634DC /* Catalog3Interactor.swift */,
+				002641D629800B98005634DC /* Catalog3Presenter.swift */,
+				002641D829800B98005634DC /* Catalog3ViewController.swift */,
+			);
+			path = Catalog3;
+			sourceTree = "<group>";
+		};
+		002641E229802087005634DC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				002641E329802093005634DC /* ProductCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		9A340274297FB9F900CBF14E /* Core */ = {
 			isa = PBXGroup;
 			children = (
@@ -226,6 +264,7 @@
 		9A3402A1297FBA7B00CBF14E /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				002641D529800B76005634DC /* Catalog3 */,
 				9A3402AF297FC1B600CBF14E /* Main */,
 				9A3402A2297FBA8E00CBF14E /* Root */,
 			);
@@ -284,6 +323,7 @@
 			isa = PBXGroup;
 			children = (
 				9A3402D3297FF91C00CBF14E /* Publisher+Extensions.swift */,
+				002641E529802A42005634DC /* UICollectionView+Extensions.swift */,
 			);
 			name = Extensions;
 			path = Tools/Extensions;
@@ -395,16 +435,19 @@
 				9A3402D62980020B00CBF14E /* StateTransformBuilder.swift in Sources */,
 				9A34029F297FBA5B00CBF14E /* Component.swift in Sources */,
 				9A3402AD297FBAAF00CBF14E /* RootBuilder.swift in Sources */,
+				002641DF29800B98005634DC /* Catalog3Protocols.swift in Sources */,
 				9A340292297FBA5B00CBF14E /* LeakDetector.swift in Sources */,
 				9A34029C297FBA5B00CBF14E /* Presenter.swift in Sources */,
 				002641C4297FE662005634DC /* Routing+Extension.swift in Sources */,
 				9A3402D0297FEC7F00CBF14E /* CancelBag.swift in Sources */,
 				9A3402BB297FC6AB00CBF14E /* MainBuilder.swift in Sources */,
 				9A3402B8297FC6AB00CBF14E /* MainRouter.swift in Sources */,
+				002641E429802093005634DC /* ProductCell.swift in Sources */,
 				002641D2297FE8C1005634DC /* NavigationRouter.swift in Sources */,
 				9A340290297FBA5B00CBF14E /* Workflow.swift in Sources */,
 				9A340299297FBA5B00CBF14E /* Combine+Extensions.swift in Sources */,
 				9A3402AC297FBAAF00CBF14E /* RootProtocols.swift in Sources */,
+				002641DC29800B98005634DC /* Catalog3Presenter.swift in Sources */,
 				9A3402A0297FBA5B00CBF14E /* PresentableInteractor.swift in Sources */,
 				002641CE297FE88D005634DC /* FlowRouter.swift in Sources */,
 				9A3402C5297FCCCA00CBF14E /* MainNavigationRouter.swift in Sources */,
@@ -413,10 +456,13 @@
 				9A3402D4297FF91C00CBF14E /* Publisher+Extensions.swift in Sources */,
 				9A340295297FBA5B00CBF14E /* MultiStageComponentizedBuilder.swift in Sources */,
 				9A340291297FBA5B00CBF14E /* Executor.swift in Sources */,
+				002641DD29800B98005634DC /* Catalog3Router.swift in Sources */,
 				9A3402AB297FBAAF00CBF14E /* RootViewController.swift in Sources */,
+				002641E629802A42005634DC /* UICollectionView+Extensions.swift in Sources */,
 				9A34028F297FBA5B00CBF14E /* ViewableRouter.swift in Sources */,
 				9A3402BA297FC6AB00CBF14E /* MainProtocols.swift in Sources */,
 				9A3402C8297FCCCA00CBF14E /* MainNavigationBuilder.swift in Sources */,
+				002641E129800B98005634DC /* Catalog3Interactor.swift in Sources */,
 				002641D0297FE8A3005634DC /* ModalRouter.swift in Sources */,
 				9A3402C6297FCCCA00CBF14E /* MainNavigationViewController.swift in Sources */,
 				9A3402B7297FC6AB00CBF14E /* MainPresenter.swift in Sources */,
@@ -427,6 +473,7 @@
 				9A34029E297FBA5B00CBF14E /* Dependency.swift in Sources */,
 				9A3402BC297FC6AB00CBF14E /* MainInteractor.swift in Sources */,
 				9A34029D297FBA5B00CBF14E /* Interactor.swift in Sources */,
+				002641DE29800B98005634DC /* Catalog3ViewController.swift in Sources */,
 				9A340296297FBA5B00CBF14E /* LaunchRouter.swift in Sources */,
 				9A6C720E297EBC8800B54C15 /* AppDelegate.swift in Sources */,
 				002641C8297FE734005634DC /* UIViewController+Transition.swift in Sources */,
@@ -436,6 +483,7 @@
 				9A3402C9297FCCCA00CBF14E /* MainNavigationInteractor.swift in Sources */,
 				002641D4297FE95A005634DC /* UINavigationController+Extension.swift in Sources */,
 				9A3402CB297FD65700CBF14E /* VIPBinder.swift in Sources */,
+				002641E029800B98005634DC /* Catalog3Builder.swift in Sources */,
 				9A340293297FBA5B00CBF14E /* ComponentizedBuilder.swift in Sources */,
 				9A340298297FBA5B00CBF14E /* Builder.swift in Sources */,
 			);
