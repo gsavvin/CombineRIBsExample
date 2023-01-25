@@ -19,8 +19,10 @@ extension Catalog3Presenter: IOTransformer {
     }
     
     let viewModel = input.state.map { state -> [String] in
-      guard case .dataLoaded(let items) = state else { return [] }
-      return items
+      switch state {
+      case .dataLoaded(let items), .nextPageDataLoaded(let items): return items
+      default: return []
+      }
     }
     
     return Catalog3PresenterOutput(isLoadingIndicatorVisible: isLoadingIndicatorVisible.eraseToAnyPublisher(),

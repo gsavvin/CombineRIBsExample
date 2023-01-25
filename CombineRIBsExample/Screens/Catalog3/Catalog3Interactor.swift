@@ -22,6 +22,7 @@ final class Catalog3Interactor: PresentableInteractor<any Catalog3Presentable>, 
   override func didBecomeActive() {
     super.didBecomeActive()
     loadData()
+    loadNextData()
   }
 }
 
@@ -39,7 +40,7 @@ extension Catalog3Interactor {
   }
   
   private func loadNextData() {
-    DispatchQueue.main.asyncAfter(deadline: .now() + 8) { [weak self] in
+    DispatchQueue.main.asyncAfter(deadline: .now() + 4) { [weak self] in
       var items: [String] = []
       for item in 21...40 {
         items.append("Продукт № \(item)")
@@ -59,27 +60,6 @@ extension Catalog3Interactor: IOTransformer {
     }.store(in: &cancelBag)
     
     StateTransform.transform(_state: _state, viewOutput: viewOutput, responses: responses, cancelBag: &cancelBag)
-    
-    /*
-    StateTransform.transitions {
-      // loading => dataLoaded
-      // Переход из загрузки данных в данные загружены
-      responses.dataLoaded.filteredByState(trait.readOnlyState, filter: StateTransform.isLoadingState)
-        .map { items in State.dataLoaded(items) }
-      
-      // loading => loadingError
-      // Переход из загрузки данных в ошибку загрузки
-      responses.loadingError.filteredByState(trait.readOnlyState, filter: StateTransform.isLoadingState)
-        .map { error in State.loadingError(error) }
-      
-      // loadingError => loading
-      // Переход из ошибки загрузки данных в повторную загрузку
-     viewOutput.retryButtonTap.filteredByState(trait.readOnlyState, filter: { $0.isLoadingErrorState })
-        .do(afterNext: <#loadData#>)
-        .map { State.isLoading }
-    }
-    .bindToAndDisposedBy(trait: trait)
-    */
 
     return Catalog3InteractorOutput(state: _state.eraseToAnyPublisher())
   }
@@ -107,7 +87,22 @@ extension Catalog3Interactor {
                           responses: Responses,
                           cancelBag: inout CancelBag) {
       transitions {
-        responses.dataLoaded.map { items in State.dataLoaded(items) }.eraseToAnyPublisher()
+        // isLoading -> dataLoaded
+        responses.dataLoaded.filteredByState(_state.eraseToAnyPublisher(), filter: isLoadingState)
+          .map { items in State.dataLoaded(items) }
+          .eraseToAnyPublisher()
+        // dataLoaded/nextPageDataLoaded -> nextPageDataLoaded
+        responses.fetchedDataLoaded.filteredByState(_state.eraseToAnyPublisher()) { state -> [String]? in
+          switch state {
+          case .nextPageDataLoaded(let items), .dataLoaded(let items): return items
+          default: return nil
+          }
+        }
+        .map { newItems, items -> State in
+          let totalItems = items + newItems
+          return State.nextPageDataLoaded(totalItems)
+        }
+        .eraseToAnyPublisher()
       }
       .sink { state in
         _state.send(state)

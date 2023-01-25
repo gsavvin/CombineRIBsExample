@@ -42,7 +42,7 @@ enum Catalog3InteractorState {
   case loadingError
   case nextPageLoading
   case nextPageLoadingError
-  case nextPageDataLoaded
+  case nextPageDataLoaded([String])
 }
 
 struct Catalog3InteractorOutput {
