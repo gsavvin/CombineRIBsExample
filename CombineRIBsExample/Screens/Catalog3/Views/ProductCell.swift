@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ProductCell: UICollectionViewCell, CollectionViewRegisterable {
+final class LabelCell: UICollectionViewCell, CollectionViewRegisterable {
   private let label = UILabel()
   
   required init?(coder: NSCoder) {
@@ -27,20 +27,30 @@ final class ProductCell: UICollectionViewCell, CollectionViewRegisterable {
   
   // MARK: Interface
   
-  func setTitle(_ title: String) {
-    label.text = title
-    label.textColor = .black
+  func setTitle(_ text: String, textColor: UIColor, fontSize: CGFloat, backgroundColor: UIColor) {
+    label.text = text
+    label.textColor = textColor
+    label.font = UIFont.systemFont(ofSize: fontSize)
+    
+    self.backgroundColor = backgroundColor
   }
   
   // MARK: Private Usage
   
   private func initialSetup() {
-    backgroundColor = .red
+    backgroundColor = .white
     
     label.translatesAutoresizingMaskIntoConstraints = false
     addSubview(label)
     
+    label.numberOfLines = 0
+    label.textAlignment = .center
+  
+    layer.cornerRadius = 16
+    
     NSLayoutConstraint.activate([
+      label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+      trailingAnchor.constraint(equalTo: label.trailingAnchor, constant: 16),
       label.centerXAnchor.constraint(equalTo: centerXAnchor),
       label.centerYAnchor.constraint(equalTo: centerYAnchor)
     ])

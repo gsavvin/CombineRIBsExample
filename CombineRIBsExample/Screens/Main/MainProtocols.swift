@@ -64,12 +64,12 @@ struct MainScreenData {
   let categories: [CatalogCategory] = CatalogCategory.stubCategories()
 }
 
-struct Banner {
+struct Banner: Hashable {
   let title: String
   let backgroundColor: UIColor
 }
 
-struct CatalogCategory {
+struct CatalogCategory: Hashable {
   let title: String
   let childCategories: [CatalogCategory]?
 }
