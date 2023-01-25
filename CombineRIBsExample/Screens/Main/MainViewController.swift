@@ -119,11 +119,12 @@ extension MainViewController: BindableView {
     guard let input = presenterOutput, isViewLoaded else { return }
     
     cancelBag.collect {
-      input.isLoadingIndicatorVisible.sink { [weak self] isVisible in
-        guard let loader = self?.activityView else { return }
-        loader.isHidden = !isVisible
-        isVisible ? loader.startAnimating() : loader.stopAnimating()
-      }
+      input.isLoadingIndicatorVisible
+        .drive { [weak self] isVisible in
+          guard let loader = self?.activityView else { return }
+          loader.isHidden = !isVisible
+          isVisible ? loader.startAnimating() : loader.stopAnimating()
+        }
     }
     
     bindWith(viewModel: input.viewModel)
@@ -142,7 +143,7 @@ extension MainViewController: BindableView {
         
         return sections
       }
-      .sink { [weak self] sections in
+      .drive { [weak self] sections in
         var snapshot = NSDiffableDataSourceSnapshot<Section, RowItem>()
 
         for section in sections {

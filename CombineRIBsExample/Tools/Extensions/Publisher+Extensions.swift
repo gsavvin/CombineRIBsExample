@@ -93,3 +93,11 @@ extension Publisher {
       .eraseToAnyPublisher()
   }
 }
+
+public extension Publisher where Self.Failure == Never {
+  /// Invokes sink function on main thread
+  func drive(_ onReceive: @escaping (Output) -> Void) -> AnyCancellable {
+    receive(on: DispatchQueue.main)
+      .sink(receiveValue: onReceive)
+  }
+}

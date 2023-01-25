@@ -96,7 +96,7 @@ extension Catalog3ViewController: BindableView {
     guard let input = presenterOutput, isViewLoaded else { return }
     
     cancelBag.collect {
-      input.isLoadingIndicatorVisible.sink { [weak self] isVisible in
+      input.isLoadingIndicatorVisible.drive { [weak self] isVisible in
         guard let loader = self?.activityView else { return }
         loader.isHidden = !isVisible
         isVisible ? loader.startAnimating() : loader.stopAnimating()
@@ -112,7 +112,7 @@ extension Catalog3ViewController: BindableView {
       rowItems += model.map { RowItem.product($0) }
       return [Section(items: rowItems)]
     }
-    .sink { [weak self] sections in
+    .drive { [weak self] sections in
       var snapshot = NSDiffableDataSourceSnapshot<Section, RowItem>()
       for section in sections {
         snapshot.appendSections([section])
