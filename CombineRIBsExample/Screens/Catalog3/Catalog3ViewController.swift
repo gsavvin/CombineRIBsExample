@@ -38,7 +38,7 @@ final class Catalog3ViewController: UIViewController, Catalog3ViewControllable {
 extension Catalog3ViewController {
   private func initialSetup() {
     collectionView.collectionViewLayout = makeLayout()
-    collectionView.register(ProductCell.self)
+    collectionView.register(LabelCell.self)
     
     collectionView.translatesAutoresizingMaskIntoConstraints = false
     view.addStretchedToBounds(subview: collectionView)
@@ -114,8 +114,11 @@ extension Catalog3ViewController {
       { collectionView, indexPath, item in
         switch item {
         case .product(let title):
-          let cell: ProductCell = collectionView.dequeue(forIndexPath: indexPath)
-          cell.setTitle(title)
+          let cell: LabelCell = collectionView.dequeue(forIndexPath: indexPath)
+          cell.setTitle(title,
+                        textColor: .black,
+                        fontSize: 16,
+                        backgroundColor: .black.withAlphaComponent(0.04))
           return cell
         }
       }

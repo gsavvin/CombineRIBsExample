@@ -34,13 +34,13 @@ final class MainStatSender: ScreenAbstractStatSender  {
   private func bindTapEvents() {
     cancelBag.collect {
       viewOutput.bannerTap
-        .sink { [weak self] in
+        .sink { [weak self] _ in
           let event = StatisticsEvent(eventName: "main_banner_tap", params: [.eventAction(.tap), .eventLabel(.banner)])
           self?.sendScreenEvent(event)
         }
       
       viewOutput.categoryTap
-        .sink { [weak self] in
+        .sink { [weak self] _ in
           let event = StatisticsEvent(eventName: "main_category_tap", params: [.eventAction(.tap), .eventLabel(.category)])
           self?.sendScreenEvent(event)
         }

@@ -52,8 +52,8 @@ struct MainPresenterOutput {
 }
 
 protocol MainViewOutput {
-  var bannerTap: AnyDriver<Void> { get }
-  var categoryTap: AnyDriver<Void> { get }
+  var bannerTap: AnyDriver<Banner> { get }
+  var categoryTap: AnyDriver<CatalogCategory> { get }
 }
 
 struct MainScreenData {
@@ -64,12 +64,12 @@ struct MainScreenData {
   let categories: [CatalogCategory] = CatalogCategory.stubCategories()
 }
 
-struct Banner {
+struct Banner: Hashable {
   let title: String
   let backgroundColor: UIColor
 }
 
-struct CatalogCategory {
+struct CatalogCategory: Hashable {
   let title: String
   let childCategories: [CatalogCategory]?
 }
