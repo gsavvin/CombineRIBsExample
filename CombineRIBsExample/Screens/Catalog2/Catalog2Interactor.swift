@@ -29,11 +29,15 @@ final class Catalog2Interactor: Interactor, Catalog2Interactable {
 
 extension Catalog2Interactor: IOTransformer {
   func transform(input viewOutput: any Catalog2ViewOutput) -> Catalog2InteractorOutput {
-    
-    viewOutput.categoryTap.sink { [weak self] in
-      self?.router?.trigger(.catalog3)
+    cancelBag.collect {
+      viewOutput.categoryTap.sink { [weak self] in
+        self?.router?.trigger(.catalog3)
+      }
+      
+      viewOutput.viewDidDissappear.sink { [weak self] in
+        self?.router?.detach()
+      }
     }
-    .store(in: &cancelBag)
 
     return Catalog2InteractorOutput(categories: categories)
   }

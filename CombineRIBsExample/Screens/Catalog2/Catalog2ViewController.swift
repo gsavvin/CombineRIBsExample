@@ -30,6 +30,13 @@ final class Catalog2ViewController: UIViewController, Catalog2ViewControllable {
     initialSetup()
     bindIfNeeded()
   }
+  
+  override func viewDidDisappear(_ animated: Bool) {
+    super.viewDidDisappear(animated)
+    if isMovingFromParent {
+      viewOutput.$viewDidDissappear.send(Void())
+    }
+  }
 }
 
 extension Catalog2ViewController {
@@ -113,6 +120,7 @@ extension Catalog2ViewController: UICollectionViewDelegate {
 
 extension Catalog2ViewController {
   private struct ViewOutput: Catalog2ViewOutput {
+    @SendablePublisher var viewDidDissappear: AnyDriver<Void>
     @SendablePublisher var categoryTap: AnyDriver<Void>
   }
 }

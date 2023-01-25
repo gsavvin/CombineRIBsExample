@@ -33,7 +33,9 @@ final class Catalog3ViewController: UIViewController, Catalog3ViewControllable {
   
   override func viewDidDisappear(_ animated: Bool) {
     super.viewDidDisappear(animated)
-    viewOutput.$viewDidDissappear.send(Void())
+    if isMovingFromParent {
+      viewOutput.$viewDidDissappear.send(Void())
+    }
   }
 }
 
