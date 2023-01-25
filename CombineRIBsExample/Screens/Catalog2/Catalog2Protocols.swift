@@ -40,5 +40,6 @@ struct Catalog2InteractorOutput {
 }
 
 protocol Catalog2ViewOutput {
+  var viewDidDissappear: AnyDriver<Void> { get }
   var categoryTap: AnyDriver<Void> { get }
 }
