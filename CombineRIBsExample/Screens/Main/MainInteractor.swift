@@ -88,10 +88,12 @@ extension MainInteractor {
                           cancelBag: inout CancelBag) {
       transitions {
         responses.dataLoaded
+          .filteredByState(_state.eraseToAnyPublisher(), filter: isLoadingState)
           .map { screenData in State.dataLoaded(screenData) }
           .eraseToAnyPublisher()
         
         responses.loadingError
+          .filteredByState(_state.eraseToAnyPublisher(), filter: isLoadingState)
           .map { State.loadingError }
           .eraseToAnyPublisher()
       }

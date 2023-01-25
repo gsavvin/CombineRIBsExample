@@ -50,11 +50,7 @@ final class MainViewController: UIViewController, MainViewControllable {
     
     private func makeLayout() -> UICollectionViewCompositionalLayout {
       UICollectionViewCompositionalLayout { [weak self] sectionIndex, environment -> NSCollectionLayoutSection? in
-        guard let self else { return nil }
-        
-        let snapshot = self.dataSource.snapshot()
-        
-        guard let section = snapshot.sectionIdentifiers[uncheckedIndex: sectionIndex] else { return nil }
+        guard let self, let section = self.dataSourceSnapshot?.sectionIdentifiers[uncheckedIndex: sectionIndex] else { return nil }
         
         switch section.identity {
         case .banners: return self.makeBannersSection()
@@ -148,11 +144,13 @@ extension MainViewController: BindableView {
       }
       .sink { [weak self] sections in
         var snapshot = NSDiffableDataSourceSnapshot<Section, RowItem>()
+
         for section in sections {
           snapshot.appendSections([section])
           snapshot.appendItems(section.items)
         }
   
+        self?.dataSourceSnapshot = snapshot
         self?.dataSource.apply(snapshot)
       }
       .store(in: &cancelBag)
@@ -163,9 +161,7 @@ extension MainViewController: BindableView {
 
 extension MainViewController: UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    let snapshot = self.dataSource.snapshot()
-    
-    guard let section = snapshot.sectionIdentifiers[uncheckedIndex: indexPath.section],
+    guard let section = self.dataSourceSnapshot?.sectionIdentifiers[uncheckedIndex: indexPath.section],
           let item = section.items[uncheckedIndex: indexPath.item] else {
       return
     }

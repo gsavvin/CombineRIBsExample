@@ -69,7 +69,6 @@ extension Catalog3Interactor: IOTransformer {
 extension Catalog3Interactor {
   private typealias State = Catalog3InteractorState
   
-  /// [Диаграмма](<#Link#>)
   private enum StateTransform: StateTransformer {
     private static let isLoadingState: (State) -> Bool = { state in
       guard case .isLoading = state else { return false } ; return true
@@ -89,9 +88,11 @@ extension Catalog3Interactor {
                           cancelBag: inout CancelBag) {
       transitions {
         // isLoading -> dataLoaded
-        responses.dataLoaded.filteredByState(_state.eraseToAnyPublisher(), filter: isLoadingState)
+        responses.dataLoaded
+          .filteredByState(_state.eraseToAnyPublisher(), filter: isLoadingState)
           .map { items in State.dataLoaded(items) }
           .eraseToAnyPublisher()
+        
         // dataLoaded/nextPageDataLoaded -> nextPageDataLoaded
         responses.fetchedDataLoaded.filteredByState(_state.eraseToAnyPublisher()) { state -> [String]? in
           switch state {
