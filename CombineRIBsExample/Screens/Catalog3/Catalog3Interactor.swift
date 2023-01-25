@@ -39,8 +39,9 @@ extension Catalog3Interactor {
     }
   }
   
+  /// Подгрузка данных для следующей страницы при пагинации
   private func loadNextData() {
-    DispatchQueue.main.asyncAfter(deadline: .now() + 4) { [weak self] in
+    DispatchQueue.main.asyncAfter(deadline: .now() + 6) { [weak self] in
       var items: [String] = []
       for item in 21...40 {
         items.append("Продукт № \(item)")

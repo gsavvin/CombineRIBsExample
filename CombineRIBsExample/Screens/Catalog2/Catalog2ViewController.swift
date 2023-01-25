@@ -14,8 +14,6 @@ final class Catalog2ViewController: UIViewController, Catalog2ViewControllable {
   private var interactorOutput: Catalog2InteractorOutput?
   private let viewOutput = ViewOutput()
   
-  private var cancelBag = CancelBag()
-  
   private var dataSource: [CatalogCategory] = [] {
     didSet {
       collectionView.reloadData()
@@ -104,7 +102,7 @@ extension Catalog2ViewController: UICollectionViewDataSource {
 
 extension Catalog2ViewController: UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    guard let item = dataSource[uncheckedIndex: indexPath.row] else { return }
+    guard dataSource[uncheckedIndex: indexPath.row] != nil else { return }
     viewOutput.$categoryTap.send(Void())
   }
 }
