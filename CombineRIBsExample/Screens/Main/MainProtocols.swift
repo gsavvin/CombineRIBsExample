@@ -29,7 +29,8 @@ protocol MainRouting: NavigationRouting {
 }
 
 enum MainRoute: RouteProtocol {
-  case catalog3(Int)
+  case catalog3
+  case catalog2([CatalogCategory])
 }
 
 protocol MainPresentable: Presentable {}
@@ -76,7 +77,7 @@ struct CatalogCategory: Hashable {
 
 extension CatalogCategory {
   static func stubCategories() -> [CatalogCategory] {
-    let categories: [CatalogCategory] = [
+    let childCategories: [CatalogCategory] = [
       CatalogCategory(title: "Мясо, птица, колбасы", childCategories: nil),
       CatalogCategory(title: "Молоко, сыр", childCategories: nil),
       CatalogCategory(title: "Овощи и фрукты", childCategories: nil),
@@ -85,6 +86,16 @@ extension CatalogCategory {
       CatalogCategory(title: "Напитки", childCategories: nil),
       CatalogCategory(title: "Орехи, снэки", childCategories: nil),
       CatalogCategory(title: "Десткие товары", childCategories: nil),
+    ]
+    let categories: [CatalogCategory] = [
+      CatalogCategory(title: "Мясо, птица, колбасы", childCategories: childCategories),
+      CatalogCategory(title: "Молоко, сыр", childCategories: childCategories),
+      CatalogCategory(title: "Овощи и фрукты", childCategories: childCategories),
+      CatalogCategory(title: "Сладости, торты", childCategories: childCategories),
+      CatalogCategory(title: "Хлеб и выпечка", childCategories: childCategories),
+      CatalogCategory(title: "Напитки", childCategories: childCategories),
+      CatalogCategory(title: "Орехи, снэки", childCategories: childCategories),
+      CatalogCategory(title: "Десткие товары", childCategories: childCategories),
     ]
     
     return categories.map { CatalogCategory(title: $0.title, childCategories: categories)}

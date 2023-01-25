@@ -21,6 +21,8 @@ final class Catalog3ViewController: UIViewController, Catalog3ViewControllable {
   
   private let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
   
+  private let activityView = UIActivityIndicatorView()
+  
   // MARK: Overriden
   
   override func viewDidLoad() {
@@ -37,6 +39,8 @@ final class Catalog3ViewController: UIViewController, Catalog3ViewControllable {
 
 extension Catalog3ViewController {
   private func initialSetup() {
+    title = "Список товаров"
+    
     collectionView.collectionViewLayout = makeLayout()
     collectionView.register(LabelCell.self)
     
@@ -44,6 +48,10 @@ extension Catalog3ViewController {
     view.addStretchedToBounds(subview: collectionView)
     
     view.backgroundColor = .brown
+    
+    activityView.style = .large
+    activityView.color = .black
+    view.addStretchedToBounds(subview: activityView)
   }
   
   private func makeLayout() -> UICollectionViewCompositionalLayout {
@@ -84,6 +92,15 @@ extension Catalog3ViewController: BindableView {
   
   private func bindIfNeeded() {
     guard let input = presenterOutput, isViewLoaded else { return }
+    
+    cancelBag.collect {
+      input.isLoadingIndicatorVisible.sink { [weak self] isVisible in
+        guard let loader = self?.activityView else { return }
+        loader.isHidden = !isVisible
+        isVisible ? loader.startAnimating() : loader.stopAnimating()
+      }
+    }
+    
     bindWith(viewModel: input.viewModel)
   }
   

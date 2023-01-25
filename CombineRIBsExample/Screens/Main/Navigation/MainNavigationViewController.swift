@@ -12,6 +12,8 @@ final class MainNavigationViewController: UINavigationController, MainNavigation
     super.viewDidLoad()
     view.backgroundColor = .systemYellow
     
+    delegate = self
+    
     let appearance = UINavigationBarAppearance()
     appearance.configureWithOpaqueBackground()
     appearance.backgroundEffect = nil
@@ -22,5 +24,16 @@ final class MainNavigationViewController: UINavigationController, MainNavigation
   
     navigationBar.standardAppearance = appearance
     navigationBar.scrollEdgeAppearance = appearance
+    
+    navigationBar.tintColor = .black
+  }
+}
+
+extension MainNavigationViewController: UINavigationControllerDelegate {
+  public func navigationController(_ navigationController: UINavigationController,
+                                   willShow viewController: UIViewController,
+                                   animated: Bool) {
+    // Убираем текст из кнопки назад
+    viewController.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
   }
 }

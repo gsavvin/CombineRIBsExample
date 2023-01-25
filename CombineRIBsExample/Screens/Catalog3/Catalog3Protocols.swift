@@ -51,7 +51,6 @@ struct Catalog3InteractorOutput {
 
 struct Catalog3PresenterOutput {
   let isLoadingIndicatorVisible: AnyDriver<Bool>
-  let showNetworkError: AnyDriver<String?>
   let viewModel: AnyDriver<[String]>
 }
 
