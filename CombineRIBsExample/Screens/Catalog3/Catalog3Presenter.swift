@@ -26,7 +26,6 @@ extension Catalog3Presenter: IOTransformer {
     }
     
     return Catalog3PresenterOutput(isLoadingIndicatorVisible: isLoadingIndicatorVisible.eraseToAnyPublisher(),
-                                   showNetworkError: Empty(completeImmediately: false).eraseToAnyPublisher(),
                                    viewModel: viewModel.eraseToAnyPublisher())
   }
 }

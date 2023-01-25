@@ -14,7 +14,8 @@ final class MainBuilder: Builder<EmptyDependency>, MainBuildable {
     let interactor = MainInteractor(presenter: presenter)
     let router = MainRouter(interactor: interactor,
                             viewController: viewController,
-                            catalog3Builder: Catalog3Builder(dependency: dependency))
+                            catalog3Builder: Catalog3Builder(dependency: dependency),
+                            catalog2Builder: Catalog2Builder(dependency: dependency))
 
     interactor.router = router
     

@@ -51,12 +51,13 @@ extension MainInteractor: IOTransformer {
     cancelBag.collect {
           input.categoryTap
             .sink { category in
-              print("route to category")
+              guard let childCategories = category.childCategories else { return }
+              actions.routeTo(.catalog2(childCategories))
             }
           
           input.bannerTap
             .sink { banner in
-              actions.routeTo(.catalog3(1))
+              actions.routeTo(.catalog3)
             }
         }
       
