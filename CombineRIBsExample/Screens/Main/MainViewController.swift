@@ -38,6 +38,8 @@ final class MainViewController: UIViewController, MainViewControllable {
     collectionView.collectionViewLayout = makeLayout()
     collectionView.register(LabelCell.self)
     
+    collectionView.delegate = self
+    
     collectionView.translatesAutoresizingMaskIntoConstraints = false
     view.addStretchedToBounds(subview: collectionView)
     
@@ -52,9 +54,7 @@ final class MainViewController: UIViewController, MainViewControllable {
         
         let snapshot = self.dataSource.snapshot()
         
-        guard snapshot.sectionIdentifiers.indices.contains(sectionIndex) else { return nil }
-        
-        let section = snapshot.sectionIdentifiers[sectionIndex]
+        guard let section = snapshot.sectionIdentifiers[uncheckedIndex: sectionIndex] else { return nil }
         
         switch section.identity {
         case .banners: return self.makeBannersSection()
@@ -158,6 +158,25 @@ extension MainViewController: BindableView {
       .store(in: &cancelBag)
     }
 }
+
+// MARK: - Collection
+
+extension MainViewController: UICollectionViewDelegate {
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    let snapshot = self.dataSource.snapshot()
+    
+    guard let section = snapshot.sectionIdentifiers[uncheckedIndex: indexPath.section],
+          let item = section.items[uncheckedIndex: indexPath.item] else {
+      return
+    }
+    
+    switch item {
+    case .banner(let banner): viewOutput.$bannerTap.send(banner)
+    case .category(let category): viewOutput.$categoryTap.send(category)
+    }
+  }
+}
+
   
 // MARK: - Helpers
 
@@ -190,8 +209,8 @@ extension MainViewController {
 
 extension MainViewController {
   private struct ViewOutput: MainViewOutput {
-    @SendablePublisher var bannerTap: AnyPublisher<Void, Never>
-    @SendablePublisher var categoryTap: AnyPublisher<Void, Never>
+    @SendablePublisher var bannerTap: AnyPublisher<Banner, Never>
+    @SendablePublisher var categoryTap: AnyPublisher<CatalogCategory, Never>
   }
 }
 
@@ -220,13 +239,3 @@ extension MainViewController {
   }
 }
 
-extension UIColor {
-    static func random() -> UIColor {
-        return UIColor(
-           red:   .random(in: 0...1),
-           green: .random(in: 0...1),
-           blue:  .random(in: 0...1),
-           alpha: 1.0
-        )
-    }
-}

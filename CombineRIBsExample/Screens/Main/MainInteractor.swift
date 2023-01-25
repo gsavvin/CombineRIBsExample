@@ -33,10 +33,6 @@ extension MainInteractor {
     DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [weak self] in
       self?.responses.$dataLoaded.send(MainScreenData())
     }
-    
-    DispatchQueue.main.asyncAfter(deadline: .now() + 5) { [weak self] in
-      self?.router?.trigger(.catalog3(1))
-    }
   }
 }
 
@@ -44,22 +40,23 @@ extension MainInteractor {
 
 extension MainInteractor: IOTransformer {
   func transform(input: MainViewOutput) -> MainInteractorOutput {
+    let actions = makeActions()
     
     StateTransform.transform(_state: _state,
                              viewOutput: input,
-                             actions: Actions(loadData: { }),
+                             actions: actions,
                              responses: responses,
                              cancelBag: &cancelBag)
     
     cancelBag.collect {
           input.categoryTap
-            .sink {
+            .sink { category in
               print("route to category")
             }
           
           input.bannerTap
-            .sink {
-              print("route to banner")
+            .sink { banner in
+              actions.routeTo(.catalog3(1))
             }
         }
       
@@ -110,7 +107,12 @@ extension MainInteractor {
 extension MainInteractor {
   private struct Actions {
     let loadData: () -> Void
-//    let routeTo: (MainScreenRoute) -> Void
+    let routeTo: (MainRoute) -> Void
+  }
+  
+  private func makeActions() -> Actions {
+    Actions(loadData: { [weak self] in self?.loadData() },
+            routeTo: { [weak router] in router?.trigger($0) })
   }
   
   private struct Responses {

@@ -52,8 +52,8 @@ struct MainPresenterOutput {
 }
 
 protocol MainViewOutput {
-  var bannerTap: AnyDriver<Void> { get }
-  var categoryTap: AnyDriver<Void> { get }
+  var bannerTap: AnyDriver<Banner> { get }
+  var categoryTap: AnyDriver<CatalogCategory> { get }
 }
 
 struct MainScreenData {

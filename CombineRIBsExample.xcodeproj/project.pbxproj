@@ -67,6 +67,7 @@
 		9A6C720E297EBC8800B54C15 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6C720D297EBC8800B54C15 /* AppDelegate.swift */; };
 		9A6C7217297EBC8A00B54C15 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A6C7216297EBC8A00B54C15 /* Assets.xcassets */; };
 		9A6C721A297EBC8A00B54C15 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A6C7218297EBC8A00B54C15 /* LaunchScreen.storyboard */; };
+		9AEFA5CB29812D920031E2AE /* CommonTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AEFA5CA29812D920031E2AE /* CommonTools.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -132,6 +133,7 @@
 		9A6C7216297EBC8A00B54C15 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9A6C7219297EBC8A00B54C15 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9A6C721B297EBC8A00B54C15 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9AEFA5CA29812D920031E2AE /* CommonTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonTools.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -321,6 +323,7 @@
 				9A3402CD297FEBFC00CBF14E /* SendablePublisher.swift */,
 				9A3402CF297FEC7F00CBF14E /* CancelBag.swift */,
 				9A3402D52980020B00CBF14E /* StateTransformBuilder.swift */,
+				9AEFA5CA29812D920031E2AE /* CommonTools.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -473,6 +476,7 @@
 				9A340291297FBA5B00CBF14E /* Executor.swift in Sources */,
 				002641DD29800B98005634DC /* Catalog3Router.swift in Sources */,
 				9A3402AB297FBAAF00CBF14E /* RootViewController.swift in Sources */,
+				9AEFA5CB29812D920031E2AE /* CommonTools.swift in Sources */,
 				002641E629802A42005634DC /* UICollectionView+Extensions.swift in Sources */,
 				9A34028F297FBA5B00CBF14E /* ViewableRouter.swift in Sources */,
 				9A3402BA297FC6AB00CBF14E /* MainProtocols.swift in Sources */,
