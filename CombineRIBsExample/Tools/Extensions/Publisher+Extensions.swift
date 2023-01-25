@@ -6,11 +6,47 @@
 //
 
 import Combine
+import Foundation
 
-public typealias PassthroughRelay<Output> = PassthroughSubject<Output, Never>
-public typealias CurrentValueRelay<Output> = CurrentValueSubject<Output, Never>
 public typealias AnyDriver<Output> = AnyPublisher<Output, Never>
-public typealias VoidRelay = PassthroughRelay<Void>
+
+class Relay<SubjectType: Subject>: Publisher, CustomCombineIdentifierConvertible where SubjectType.Failure == Never {
+    typealias Output = SubjectType.Output
+    typealias Failure = SubjectType.Failure
+  
+    let subject: SubjectType
+  
+    init(subject: SubjectType) {
+        self.subject = subject
+    }
+  
+    func send(_ value: Output) {
+        subject
+            .send(value)
+    }
+  
+    func receive<S: Subscriber>(subscriber: S)
+        where Failure == S.Failure, Output == S.Input {
+        subject
+            .subscribe(on: DispatchQueue.main)
+            .receive(subscriber: subscriber)
+    }
+}
+
+typealias CurrentValueRelay<Output> = Relay<CurrentValueSubject<Output, Never>>
+typealias PassthroughRelay<Output> = Relay<PassthroughSubject<Output, Never>>
+
+extension Relay {
+    convenience init<O>(_ value: O)
+        where SubjectType == CurrentValueSubject<O, Never> {
+        self.init(subject: CurrentValueSubject(value))
+    }
+  
+    convenience init<O>()
+        where SubjectType == PassthroughSubject<O, Never> {
+        self.init(subject: PassthroughSubject())
+    }
+}
 
 extension Publisher {
   /// Аналог оператора withLatestFrom в RxSwift
