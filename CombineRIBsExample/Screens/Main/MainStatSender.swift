@@ -35,6 +35,8 @@ final class MainStatSender: ScreenAbstractStatSender  {
     cancelBag.collect {
       viewOutput.bannerTap
         .sink { [weak self] _ in
+          // Структура StatisticsEvent просто для примера
+          // eventName к примеру можно формировать конкатенацией других полей
           let event = StatisticsEvent(eventName: "main_banner_tap", params: [.eventAction(.tap), .eventLabel(.banner)])
           self?.sendScreenEvent(event)
         }

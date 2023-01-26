@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let window = UIWindow(frame: UIScreen.main.bounds)
     self.window = window
     
+    // По DI вопрос открытый — можно использовать что-то своё, а можно и то, что предлагает нам RIBs
     let rootRouter = RootBuilder(dependency: EmptyComponent()).build()
     rootRouter.launch(from: window)
     

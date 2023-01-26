@@ -21,7 +21,7 @@
 		002641DF29800B98005634DC /* Catalog3Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002641D929800B98005634DC /* Catalog3Protocols.swift */; };
 		002641E029800B98005634DC /* Catalog3Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002641DA29800B98005634DC /* Catalog3Builder.swift */; };
 		002641E129800B98005634DC /* Catalog3Interactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002641DB29800B98005634DC /* Catalog3Interactor.swift */; };
-		002641E429802093005634DC /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002641E329802093005634DC /* ProductCell.swift */; };
+		002641E429802093005634DC /* LabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002641E329802093005634DC /* LabelCell.swift */; };
 		002641E629802A42005634DC /* UICollectionView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002641E529802A42005634DC /* UICollectionView+Extensions.swift */; };
 		002641EF2981358B005634DC /* Catalog2Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002641E92981358B005634DC /* Catalog2Router.swift */; };
 		002641F02981358B005634DC /* Catalog2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002641EA2981358B005634DC /* Catalog2ViewController.swift */; };
@@ -91,7 +91,7 @@
 		002641D929800B98005634DC /* Catalog3Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Catalog3Protocols.swift; sourceTree = "<group>"; };
 		002641DA29800B98005634DC /* Catalog3Builder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Catalog3Builder.swift; sourceTree = "<group>"; };
 		002641DB29800B98005634DC /* Catalog3Interactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Catalog3Interactor.swift; sourceTree = "<group>"; };
-		002641E329802093005634DC /* ProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
+		002641E329802093005634DC /* LabelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelCell.swift; sourceTree = "<group>"; };
 		002641E529802A42005634DC /* UICollectionView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extensions.swift"; sourceTree = "<group>"; };
 		002641E92981358B005634DC /* Catalog2Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Catalog2Router.swift; sourceTree = "<group>"; };
 		002641EA2981358B005634DC /* Catalog2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Catalog2ViewController.swift; sourceTree = "<group>"; };
@@ -202,7 +202,7 @@
 		002641E229802087005634DC /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				002641E329802093005634DC /* ProductCell.swift */,
+				002641E329802093005634DC /* LabelCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -494,7 +494,7 @@
 				9A3402D829801F1300CBF14E /* MainStatSender.swift in Sources */,
 				9A3402BB297FC6AB00CBF14E /* MainBuilder.swift in Sources */,
 				9A3402B8297FC6AB00CBF14E /* MainRouter.swift in Sources */,
-				002641E429802093005634DC /* ProductCell.swift in Sources */,
+				002641E429802093005634DC /* LabelCell.swift in Sources */,
 				002641D2297FE8C1005634DC /* NavigationRouter.swift in Sources */,
 				9A340290297FBA5B00CBF14E /* Workflow.swift in Sources */,
 				9A340299297FBA5B00CBF14E /* Combine+Extensions.swift in Sources */,

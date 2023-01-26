@@ -39,29 +39,35 @@ extension MainInteractor {
 // MARK: - IOTransformer
 
 extension MainInteractor: IOTransformer {
-  func transform(input: MainViewOutput) -> MainInteractorOutput {
+  func transform(input viewOutput: MainViewOutput) -> MainInteractorOutput {
     let actions = makeActions()
     
+    // Если переходов мало то можно и не создавать метод transform(_:), а сразу вызвать StateTransform.transitions { }
+    
     StateTransform.transform(_state: _state,
-                             viewOutput: input,
+                             viewOutput: viewOutput,
                              actions: actions,
                              responses: responses,
                              cancelBag: &cancelBag)
     
+    Self.anyStateRouting(viewOutput: viewOutput, actions: actions, cancelBag: &cancelBag)
+    
+    return MainInteractorOutput(state: _state.eraseToAnyPublisher())
+  }
+  
+  private static func anyStateRouting(viewOutput: MainViewOutput, actions: Actions, cancelBag: inout CancelBag) {
     cancelBag.collect {
-          input.categoryTap
-            .sink { category in
-              guard let childCategories = category.childCategories else { return }
-              actions.routeTo(.catalog2(childCategories))
-            }
-          
-          input.bannerTap
-            .sink { banner in
-              actions.routeTo(.catalog3)
-            }
+      viewOutput.categoryTap
+        .sink { category in
+          guard let childCategories = category.childCategories else { return }
+          actions.routeTo(.catalog2(childCategories))
         }
       
-      return MainInteractorOutput(state: _state.eraseToAnyPublisher())
+      viewOutput.bannerTap
+        .sink { banner in
+          actions.routeTo(.catalog3)
+        }
+    }
   }
 }
 
@@ -86,16 +92,34 @@ extension MainInteractor {
                           actions: Actions,
                           responses: Responses,
                           cancelBag: inout CancelBag) {
+      let state = _state.eraseToAnyPublisher()
+      
       transitions {
+        // isLoading => dataLoaded
         responses.dataLoaded
-          .filteredByState(_state.eraseToAnyPublisher(), filter: isLoadingState)
+          .filteredByState(state, filter: isLoadingState)
           .map { screenData in State.dataLoaded(screenData) }
           .eraseToAnyPublisher()
         
+        // isLoading => loadingError
         responses.loadingError
-          .filteredByState(_state.eraseToAnyPublisher(), filter: isLoadingState)
+          .filteredByState(state, filter: isLoadingState)
           .map { State.loadingError }
           .eraseToAnyPublisher()
+        
+        // Примеры других возможных переходов состояний:
+        
+//        // dataLoaded => loading
+//        viewOutput.pullToRefresh
+//          .filteredByState(state, filter: dataLoadedState)
+//          .do(onNext: actions.loadData)
+//          .map { State.isLoading }
+//
+//        // loadingError => loading
+//        viewOutput.retryButtonTap
+//          .filteredByState(state, filter: loadingErrorState)
+//          .do(onNext: actions.loadData)
+//          .map { State.isLoading }
       }
       .sink { state in
         _state.send(state)

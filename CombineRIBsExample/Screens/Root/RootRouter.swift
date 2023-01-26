@@ -21,6 +21,7 @@ final class RootRouter: LaunchRouter<RootInteractable, RootViewControllable, Roo
   override func didLoad() {
     super.didLoad()
     
+    // Поскольку в Root сейчас нет никакой бизнес логики, то после загрузки просто начинаем показывать main
     trigger(.main)
   }
   

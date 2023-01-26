@@ -34,6 +34,9 @@ extension Catalog2Interactor: IOTransformer {
         self?.router?.trigger(.catalog3)
       }
       
+      // Нужно реализовать на Combine события жизненного цикла View controller и детачить роутер не придётся,
+      // это будет делаться в дефолтной реализации автоматически
+      // (сейчас не реализовали в силу ограниченного времени)
       viewOutput.viewDidDissappear.sink { [weak self] in
         self?.router?.detach()
       }

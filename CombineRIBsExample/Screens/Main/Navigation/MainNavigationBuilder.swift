@@ -9,6 +9,7 @@ final class MainNavigationBuilder: Builder<EmptyDependency>, MainNavigationBuild
   func build() -> MainNavigationRouting {
     let viewController = MainNavigationViewController()
     let interactor = MainNavigationInteractor()
+    
     let router = MainNavigationRouter(interactor: interactor,
                                       viewController: viewController,
                                       mainBuilder: MainBuilder(dependency: EmptyComponent()))

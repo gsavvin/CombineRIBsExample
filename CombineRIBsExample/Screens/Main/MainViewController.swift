@@ -25,12 +25,15 @@ final class MainViewController: UIViewController, MainViewControllable {
   private let activityView = UIActivityIndicatorView()
   
   // MARK: Overriden
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
     initialSetup()
     bindIfNeeded()
   }
+  
+  // MARK: Private methods
   
   private func initialSetup() {
     view.backgroundColor = .white
@@ -47,19 +50,19 @@ final class MainViewController: UIViewController, MainViewControllable {
     activityView.color = .black
     view.addStretchedToBounds(subview: activityView)
   }
-    
-    private func makeLayout() -> UICollectionViewCompositionalLayout {
-      UICollectionViewCompositionalLayout { [weak self] sectionIndex, environment -> NSCollectionLayoutSection? in
-        guard let self, let section = self.dataSourceSnapshot?.sectionIdentifiers[uncheckedIndex: sectionIndex] else { return nil }
-        
-        switch section.identity {
-        case .banners: return self.makeBannersSection()
-        case .categories: return self.makeCategoriesSection()
-        }
+  
+  private func makeLayout() -> UICollectionViewCompositionalLayout {
+    UICollectionViewCompositionalLayout { [weak self] sectionIndex, environment -> NSCollectionLayoutSection? in
+      guard let self, let section = self.dataSourceSnapshot?.sectionIdentifiers[uncheckedIndex: sectionIndex] else { return nil }
+      
+      switch section.identity {
+      case .banners: return self.makeBannersSection()
+      case .categories: return self.makeCategoriesSection()
       }
     }
+  }
   
-  func makeBannersSection() -> NSCollectionLayoutSection {
+  private func makeBannersSection() -> NSCollectionLayoutSection {
     let itemHeight = CGFloat(200)
     
     let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(itemHeight))
@@ -81,7 +84,7 @@ final class MainViewController: UIViewController, MainViewControllable {
     return section
   }
   
-  func makeCategoriesSection() -> NSCollectionLayoutSection {
+  private func makeCategoriesSection() -> NSCollectionLayoutSection {
     let itemBottomInset: CGFloat = 16
     let itemHeight = 150 + itemBottomInset
     
@@ -94,14 +97,14 @@ final class MainViewController: UIViewController, MainViewControllable {
     
     let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(itemHeight))
     let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-
+    
     let section = NSCollectionLayoutSection(group: group)
     section.contentInsets = NSDirectionalEdgeInsets(top: 8,
                                                     leading: 8,
                                                     bottom: 0,
                                                     trailing: 8)
     
-    return section
+    private return section
   }
 }
 
@@ -122,40 +125,40 @@ extension MainViewController: BindableView {
       input.isLoadingIndicatorVisible
         .drive { [weak self] isVisible in
           guard let loader = self?.activityView else { return }
-          loader.isHidden = !isVisible
           isVisible ? loader.startAnimating() : loader.stopAnimating()
+          loader.isHidden = !isVisible
         }
     }
     
     bindWith(viewModel: input.viewModel)
   }
   
-    private func bindWith(viewModel: AnyDriver<MainScreenData>) {
-      viewModel.map { model -> [Section] in
-        var sections: [Section] = []
-        
-        let bannersSection = Section(identity: .banners, items: [RowItem.banner(model.banner)])
-        sections.append(bannersSection)
-        
-        let categories = model.categories.map { RowItem.category($0) }
-        let categoriesSection = Section(identity: .categories, items: categories)
-        sections.append(categoriesSection)
-        
-        return sections
-      }
-      .drive { [weak self] sections in
-        var snapshot = NSDiffableDataSourceSnapshot<Section, RowItem>()
-
-        for section in sections {
-          snapshot.appendSections([section])
-          snapshot.appendItems(section.items)
-        }
-  
-        self?.dataSourceSnapshot = snapshot
-        self?.dataSource.apply(snapshot)
-      }
-      .store(in: &cancelBag)
+  private func bindWith(viewModel: AnyDriver<MainScreenData>) {
+    viewModel.map { model -> [Section] in
+      var sections: [Section] = []
+      
+      let bannersSection = Section(identity: .banners, items: [RowItem.banner(model.banner)])
+      sections.append(bannersSection)
+      
+      let categories = model.categories.map { RowItem.category($0) }
+      let categoriesSection = Section(identity: .categories, items: categories)
+      sections.append(categoriesSection)
+      
+      return sections
     }
+    .drive { [weak self] sections in
+      var snapshot = NSDiffableDataSourceSnapshot<Section, RowItem>()
+      
+      for section in sections {
+        snapshot.appendSections([section])
+        snapshot.appendItems(section.items)
+      }
+      
+      self?.dataSourceSnapshot = snapshot
+      self?.dataSource.apply(snapshot)
+    }
+    .store(in: &cancelBag)
+  }
 }
 
 // MARK: - Collection

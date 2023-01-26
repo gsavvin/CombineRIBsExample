@@ -12,6 +12,7 @@ final class MainBuilder: Builder<EmptyDependency>, MainBuildable {
     let viewController = MainViewController()
     let presenter = MainPresenter()
     let interactor = MainInteractor(presenter: presenter)
+    
     let router = MainRouter(interactor: interactor,
                             viewController: viewController,
                             catalog3Builder: Catalog3Builder(dependency: dependency),
@@ -21,9 +22,10 @@ final class MainBuilder: Builder<EmptyDependency>, MainBuildable {
     
     let vipOutput = VIPBinder.bind(viewController: viewController, interactor: interactor, presenter: presenter)
     
+    // Аналитика.
     do {
-      /// Нужно доставать из зависимостей.
-      /// Сендер, задача которого отправить готовый ивент куда нужно (в нашем случае вероятно лишь наружу из библиотеки)
+      // Нужно доставать из зависимостей.
+      // Сендер, задача которого отправить готовый ивент куда нужно (в нашем случае вероятно лишь наружу из библиотеки)
       let globalSender = StatisticsSenderImp()
       
       let mainStatSender = MainStatSender(sender: globalSender,

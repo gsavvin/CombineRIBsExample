@@ -41,7 +41,7 @@ extension Catalog3Interactor {
   
   /// Подгрузка данных для следующей страницы при пагинации
   private func loadNextData() {
-    DispatchQueue.main.asyncAfter(deadline: .now() + 6) { [weak self] in
+    DispatchQueue.main.asyncAfter(deadline: .now() + 5) { [weak self] in
       var items: [String] = []
       for item in 21...40 {
         items.append("Продукт № \(item)")
@@ -55,12 +55,17 @@ extension Catalog3Interactor {
 
 extension Catalog3Interactor: IOTransformer {
   func transform(input viewOutput: any Catalog3ViewOutput) -> Catalog3InteractorOutput {
+    StateTransform.transform(_state: _state,
+                             viewOutput: viewOutput,
+                             responses: responses,
+                             cancelBag: &cancelBag)
     
+    // Нужно реализовать на Combine события жизненного цикла View controller и детачить роутер не придётся,
+    // это будет делаться в дефолтной реализации автоматически
+    // (сейчас не реализовали в силу ограниченного времени)
     viewOutput.viewDidDissappear.sink { [weak self] in
       self?.router?.detach()
     }.store(in: &cancelBag)
-    
-    StateTransform.transform(_state: _state, viewOutput: viewOutput, responses: responses, cancelBag: &cancelBag)
 
     return Catalog3InteractorOutput(state: _state.eraseToAnyPublisher())
   }
@@ -94,7 +99,8 @@ extension Catalog3Interactor {
           .eraseToAnyPublisher()
         
         // dataLoaded/nextPageDataLoaded -> nextPageDataLoaded
-        responses.fetchedDataLoaded.filteredByState(_state.eraseToAnyPublisher()) { state -> [String]? in
+        responses.fetchedDataLoaded
+          .filteredByState(_state.eraseToAnyPublisher()) { state -> [String]? in
           switch state {
           case .nextPageDataLoaded(let items), .dataLoaded(let items): return items
           default: return nil

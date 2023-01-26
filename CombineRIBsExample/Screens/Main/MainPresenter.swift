@@ -18,6 +18,8 @@ extension MainPresenter: IOTransformer {
       }
     }
     
+    // Тут можно дописать удобные обёртки, чтобы не дублировать код с видимостью лоудеров в презентерах
+    // Тоже самое для показа zeroView (state = loadingDataError), либо показа тостов с ошибками
     let isLoadingIndicatorVisible = input.state.map { state in
       guard case .isLoading = state else { return false }
       return true
